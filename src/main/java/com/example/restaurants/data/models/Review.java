@@ -10,7 +10,7 @@ public class Review {
     private Long id;
 
     @ManyToOne
-    private User user;
+    private Users user;
 
     @Column
     private String comment;
@@ -22,11 +22,11 @@ public class Review {
         return id;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

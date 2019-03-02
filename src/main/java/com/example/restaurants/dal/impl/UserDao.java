@@ -1,7 +1,7 @@
 package com.example.restaurants.dal.impl;
 
 import com.example.restaurants.dal.IUserDao;
-import com.example.restaurants.data.models.User;
+import com.example.restaurants.data.models.Users;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,21 +9,21 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 @Repository
-public class UserDao extends BaseDao<User> implements IUserDao {
+public class UserDao extends BaseDao<Users> implements IUserDao {
 
     public UserDao() {
-        super.setCls(User.class);
+        super.setCls(Users.class);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public User
+    public Users
     getUnique(String email) {
 
-        TypedQuery<User> query =
+        TypedQuery<Users> query =
             entityManager.createQuery(
                 "select u from User u where u.email = :email",
-                User.class
+                Users.class
             );
 
         query.setParameter("email", email);

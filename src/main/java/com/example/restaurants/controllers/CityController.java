@@ -14,7 +14,7 @@ import java.util.List;
 public class CityController {
 
     @Autowired
-    private CityDao cityDao;
+    private CityDao cityDao; // repo
 
     @CrossOrigin
     @RequestMapping(value = "/all", method = RequestMethod.GET)
