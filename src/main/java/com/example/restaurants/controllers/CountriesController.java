@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/countries")
-public class CountryController {
+public class CountriesController {
 
     @Autowired
     private CountryDao countryDao;

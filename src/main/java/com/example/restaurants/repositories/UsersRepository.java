@@ -7,6 +7,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.UUID;
 
-public interface UserRepository extends CrudRepository<Users, Long> {
+public interface UsersRepository extends CrudRepository<Users, Long> {
     Users findByEmail(String email);
 }

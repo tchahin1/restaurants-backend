@@ -6,11 +6,14 @@ import javax.persistence.*;
 @Table(name = "reviews")
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
     private Users user;
+
+    @ManyToOne
+    private Restaurant restaurant;
 
     @Column
     private String comment;
@@ -18,8 +21,12 @@ public class Review {
     @Column(nullable = false)
     private Integer rating;
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Users getUser() {
@@ -44,5 +51,13 @@ public class Review {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

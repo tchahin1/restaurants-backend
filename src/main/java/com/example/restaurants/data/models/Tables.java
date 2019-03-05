@@ -18,6 +18,9 @@ public class Tables {
     @ManyToOne
     private Restaurant restaurant;
 
+    @Column
+    private Boolean reserved;
+
     public long getId() {
         return id;
     }
@@ -44,5 +47,13 @@ public class Tables {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public Boolean getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(Boolean reserved) {
+        this.reserved = reserved;
     }
 }
