@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/cities")
-public class CityController {
+public class CitiesController {
 
     @Autowired
-    private CityDao cityDao;
+    private CityDao cityDao; // repo
 
     @CrossOrigin
     @RequestMapping(value = "/all", method = RequestMethod.GET)

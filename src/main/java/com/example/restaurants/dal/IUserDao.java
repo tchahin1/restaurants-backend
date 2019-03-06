@@ -1,8 +1,8 @@
 package com.example.restaurants.dal;
 
-import com.example.restaurants.data.models.User;
+import com.example.restaurants.data.models.Users;
 
 public interface IUserDao {
 
-    User getUnique (String email);
+    Users getUnique (String email);
 }

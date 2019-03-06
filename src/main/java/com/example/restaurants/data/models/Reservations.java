@@ -17,7 +17,7 @@ public class Reservations {
     private Date timeTo;
 
     @ManyToOne
-    private User user;
+    private Users user;
 
     @ManyToOne
     private Tables table;
@@ -42,7 +42,7 @@ public class Reservations {
         this.timeTo = timeTo;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
@@ -50,7 +50,7 @@ public class Reservations {
         return table;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

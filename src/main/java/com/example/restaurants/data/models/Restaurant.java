@@ -10,6 +10,9 @@ public class Restaurant {
     private long id;
 
     @Column
+    private String pictureUrl;
+
+    @Column
     private Integer stars;
 
     @Column
@@ -20,6 +23,12 @@ public class Restaurant {
 
     @Column
     private String description;
+
+    @Column
+    private String address;
+
+    @ManyToOne
+    private City city;
 
     @Column
     private Integer reservationInterval;
@@ -66,5 +75,29 @@ public class Restaurant {
 
     public void setReservationInterval(Integer reservationInterval) {
         this.reservationInterval = reservationInterval;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }

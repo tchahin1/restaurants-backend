@@ -9,16 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/countries")
-public class CountryController {
+@RequestMapping("/countries")
+public class CountriesController {
 
     @Autowired
     private CountryDao countryDao;
 
-    @CrossOrigin
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/all")
     public List<Country> getAllCountries() {
-        return countryDao.getAll();
+        return countryDao.getAll(); // Use repository
     }
 }

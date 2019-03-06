@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="users")
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,6 +33,15 @@ public class User {
     private City city;
 
     private Boolean admin;
+
+    public Users(){
+
+    }
+
+    public Users(String username, String password){
+        this.email = username;
+        this.password = password;
+    }
 
     public long getId() {
         return id;
@@ -100,5 +109,9 @@ public class User {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public String getUsername() {
+        return email;
     }
 }

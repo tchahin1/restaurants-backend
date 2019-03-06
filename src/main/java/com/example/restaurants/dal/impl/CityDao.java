@@ -41,13 +41,11 @@ public class CityDao extends BaseDao<City> {
                 entityManager.createQuery(
                         "select ci " +
                                 "from City ci " +
-                                "inner join Country co on co.id = :countryId " +
-                                "where co.name = :countryName",
+                                "where ci.country.id = :countryId",
                         City.class
                 );
 
         query.setParameter("countryId", countryId);
-        query.setParameter("countryName", countryName);
         return query.getResultList();
     }
 }

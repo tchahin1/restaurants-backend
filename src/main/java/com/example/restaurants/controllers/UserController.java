@@ -5,14 +5,13 @@ package com.example.restaurants.controllers;
 import com.example.restaurants.dal.impl.CityDao;
 import com.example.restaurants.dal.impl.UserDao;
 import com.example.restaurants.data.dtos.UserDTO;
-import com.example.restaurants.data.dtos.UserLoginDTO;
 import com.example.restaurants.data.models.City;
-import com.example.restaurants.data.models.User;
-import com.example.restaurants.repositories.UserRepository;
+import com.example.restaurants.data.models.Users;
+import com.example.restaurants.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,67 +20,58 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
+
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository usersRepository;
 
     @Autowired
     private CityDao cityDao;
 
-//    private UserRepository applicationUserRepository;
-//    private BCryptPasswordEncoder bCryptPasswordEncoder;
-//
-//    public UserController(UserRepository applicationUserRepository,
-//                          BCryptPasswordEncoder bCryptPasswordEncoder) {
-//        this.applicationUserRepository = applicationUserRepository;
-//        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-//    }
-//
-//    @PostMapping("/sign-up")
-//    public void signUp(@RequestBody User user) {
-//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-//        applicationUserRepository.save(user);
-//    }
+    //jwt
 
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody UserLoginDTO user) {
+    //private UsersRepository usersRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-        if (StringUtils.isEmpty(user.getEmail())) {
-            return null;
-        }
+    public UserController(UsersRepository usersRepository,
+                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.usersRepository = usersRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
-//        User existingUser = userDao.getUnique(user.getEmail());
-        User existingUser = userRepository.findByEmail(user.getEmail());
+    @PostMapping("/sign-up")
+    public void signUp(@RequestBody Users user) {
 
-        if (existingUser != null) {
-            //throw new IllegalArgumentException("User already exists.");
-            return ResponseEntity.ok(existingUser);
-        }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        usersRepository.save(user);
+    }
 
-        //samo jos testirati validaciju passworda!
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    @GetMapping("/id")
+    public ResponseEntity getId(String username){
+        return new ResponseEntity(usersRepository.findByEmail(username), HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody UserDTO userDTO) {
+    public ResponseEntity register(@RequestBody UserDTO userDTO) {
 
-        // todo: remove, not needed because you already have a unique db constraint
-//        User existingUser = userDao.getUnique(userDTO.getEmail());
-//
-//        if (existingUser != null) {
-//            throw new IllegalArgumentException("User already exists.");
-//        }
+        Users existingUser = usersRepository.findByEmail(userDTO.getEmail());
+        if(existingUser!=null){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
 
-        User user = new User();
-        user.setName(userDTO.getName());
-        user.setLastName(userDTO.getLastName());
-        user.setEmail(userDTO.getEmail());
-        user.setPhoneNumber(userDTO.getPhoneNumber());
-        user.setPassword(userDTO.getPassword());
+        else {
+            Users user = new Users();
+            user.setName(userDTO.getName());
+            user.setLastName(userDTO.getLastName());
+            user.setEmail(userDTO.getEmail());
+            user.setPhoneNumber(userDTO.getPhoneNumber());
+            user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
 
-        City city = cityDao.getCity(userDTO.getCity(), userDTO.getCountry());
-        user.setCity(city);
-        user.setCountry(city.getCountry());
-
-        return userDao.save(user);
+            System.out.println(userDTO.getCity() + userDTO.getCountry());
+            City city = cityDao.getCity(userDTO.getCity(), userDTO.getCountry());
+            user.setCity(city);
+            user.setCountry(city.getCountry());
+            userDao.save(user);
+            return new ResponseEntity(HttpStatus.OK);
+        }
     }
 }
