@@ -9,5 +9,7 @@ public interface TablesRepository extends CrudRepository<Tables, Long> {
     long countTablesByReservedIsFalseAndRestaurant_NameAndType(String name, Integer type);
 
     List<Tables> findDistinctByRestaurant_Name(String name);
+
+    Tables findByTypeAndReservedIsFalseAndRestaurant_Name(Integer type, String name);
 }
 

@@ -33,7 +33,7 @@ public class Restaurant {
     @Column
     private Integer reservationInterval;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

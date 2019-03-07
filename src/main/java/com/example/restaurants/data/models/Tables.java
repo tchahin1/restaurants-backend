@@ -21,7 +21,7 @@ public class Tables {
     @Column
     private Boolean reserved;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
