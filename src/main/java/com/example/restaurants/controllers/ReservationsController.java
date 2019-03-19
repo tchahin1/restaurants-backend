@@ -93,7 +93,11 @@ public class ReservationsController {
 
     @CrossOrigin
     @GetMapping("/check/table")
-    public ResponseEntity check(String date, String time, String username, String restaurant, Integer type){
+    public ResponseEntity check(@RequestParam String date,
+                                @RequestParam String time,
+                                @RequestParam String username,
+                                @RequestParam String restaurant,
+                                @RequestParam Integer type){
 
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
