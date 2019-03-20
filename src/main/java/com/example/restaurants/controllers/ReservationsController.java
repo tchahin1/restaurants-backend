@@ -36,7 +36,11 @@ public class ReservationsController {
 
     @CrossOrigin
     @GetMapping
-    public ResponseEntity create(String date, String time, String username, String restaurant, Integer type){
+    public ResponseEntity create(@RequestParam String date,
+                                 @RequestParam String time,
+                                 @RequestParam String username,
+                                 @RequestParam String restaurant,
+                                 @RequestParam Integer type){
 
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
@@ -63,7 +67,12 @@ public class ReservationsController {
 
     @CrossOrigin
     @GetMapping("/save/time")
-    public ResponseEntity createByTime(String date, String time, String timeFrom, String username, String restaurant, Integer type){
+    public ResponseEntity createByTime(@RequestParam String date,
+                                       @RequestParam String time,
+                                       @RequestParam String timeFrom,
+                                       @RequestParam String username,
+                                       @RequestParam String restaurant,
+                                       @RequestParam Integer type){
 
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
@@ -136,7 +145,7 @@ public class ReservationsController {
     }
 
     @GetMapping("/check")
-    public ResponseEntity check(String restaurant, String user){
+    public ResponseEntity check(@RequestParam String restaurant, @RequestParam String user){
         Reservations reservations = reservationsRepository.findByUser_EmailAndTable_Restaurant_Name(user, restaurant);
         if(reservations!=null) return new ResponseEntity(reservations, HttpStatus.BAD_REQUEST);
         return new ResponseEntity(reservations, HttpStatus.OK);

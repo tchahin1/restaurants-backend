@@ -52,7 +52,8 @@ public class ReviewsController {
     }
 
     @GetMapping("/check")
-    public ResponseEntity check(String restaurant, String user){
+    public ResponseEntity check(@RequestParam String restaurant,
+                                @RequestParam String user){
         Review review = reviewsRepository.findReviewByRestaurant_NameAndUser_Email(restaurant, user);
         if(review!=null) return new ResponseEntity(review, HttpStatus.BAD_REQUEST);
         return new ResponseEntity(review, HttpStatus.OK);

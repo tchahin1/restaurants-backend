@@ -51,14 +51,20 @@ public class RestaurantsController {
     }
 
     @GetMapping("/search")
-    public Page<List<Restaurant>> search(String query, Integer page, Integer size) {
+    public Page<List<Restaurant>> search(@RequestParam String query,
+                                         @RequestParam Integer page,
+                                         @RequestParam Integer size) {
         Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantsByNameOrCity_NameOrAddressContains(query, query,
                 query, new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         return restaurantPage;
     }
 
     @GetMapping("/search/filterBy")
-    public Page<List<Restaurant>> search(String query, Integer stars, Integer pricing, Integer page, Integer size) {
+    public Page<List<Restaurant>> search(@RequestParam String query,
+                                         @RequestParam Integer stars,
+                                         @RequestParam Integer pricing,
+                                         @RequestParam Integer page,
+                                         @RequestParam Integer size) {
         Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantByNameOrCity_NameOrAddressContainsAndPricingIsLessThanEqualOrStarsIsLessThanEqual
                 (query, query, query, pricing, stars,
                         new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));

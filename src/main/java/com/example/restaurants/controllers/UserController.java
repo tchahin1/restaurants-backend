@@ -46,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("/id")
-    public ResponseEntity getId(String username){
+    public ResponseEntity getId(@RequestParam String username){
         return new ResponseEntity(usersRepository.findByEmail(username), HttpStatus.OK);
     }
 
