@@ -10,8 +10,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface SearchRepository extends PagingAndSortingRepository<Restaurant, Long> {
-    Page<List<Restaurant>> findRestaurantsByNameOrCity_NameOrAddressContains(String name, String city_name, String address, Pageable var1);
+    Page<List<Restaurant>> findRestaurantsByNameContainsOrCity_NameContainsOrAddressContains(String name, String city_name, String address, Pageable var1);
 
-    Page<List<Restaurant>> findRestaurantByNameOrCity_NameOrAddressContainsAndPricingIsLessThanEqualOrStarsIsLessThanEqual
+    Page<List<Restaurant>> findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsOrStarsIs
+            (String name, String city_name, String address, Integer pricing, Integer rating, Pageable var1);
+
+    Page<List<Restaurant>> findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsAndStarsIs
             (String name, String city_name, String address, Integer pricing, Integer rating, Pageable var1);
 }

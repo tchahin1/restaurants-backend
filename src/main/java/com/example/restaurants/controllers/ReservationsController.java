@@ -150,4 +150,24 @@ public class ReservationsController {
         if(reservations!=null) return new ResponseEntity(reservations, HttpStatus.BAD_REQUEST);
         return new ResponseEntity(reservations, HttpStatus.OK);
     }
+
+
+
+    /*private void algorithm(String time, Integer table){
+        if(time.isAfter("08:00") && time.isBefore("00:00")){
+            //todo: do algorithm
+            //todo: first check if there is table that matches the entered one
+            if(table == someTable){
+                //todo: round the entered time
+                //todo: check the entered time
+            }
+            else{
+                //todo: try to combine tables to get the nearest best fit
+            }
+            //todo: return no matching tables found
+        }
+        else{
+            //todo: return bad request
+        }
+    }*/
 }

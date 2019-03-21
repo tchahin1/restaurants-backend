@@ -54,7 +54,7 @@ public class RestaurantsController {
     public Page<List<Restaurant>> search(@RequestParam String query,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
-        Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantsByNameOrCity_NameOrAddressContains(query, query,
+        Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantsByNameContainsOrCity_NameContainsOrAddressContains(query, query,
                 query, new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         return restaurantPage;
     }
@@ -65,9 +65,35 @@ public class RestaurantsController {
                                          @RequestParam Integer pricing,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
-        Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantByNameOrCity_NameOrAddressContainsAndPricingIsLessThanEqualOrStarsIsLessThanEqual
-                (query, query, query, pricing, stars,
-                        new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
+
+        Page<List<Restaurant>> restaurantPage;
+        String query1 = query;
+        query="";
+
+        String[] strings = query1.split(" ");
+        for(int i = 0; i < strings.length; i++){
+            String string = strings[i];
+            string = string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
+            query+=string;
+            if(i<strings.length-1) query+=" ";
+        }
+
+        if(stars != 0 && pricing != 0) {
+            restaurantPage = searchRepository.findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsAndStarsIs
+                    (query, query, query, pricing, stars,
+                            new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
+        }
+        else if((stars !=0 && pricing == 0) || (stars == 0 && pricing != 0)){
+            restaurantPage = searchRepository.findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsOrStarsIs
+                    (query, query, query, pricing, stars,
+                            new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
+        }
+        else{
+            restaurantPage = searchRepository.findRestaurantsByNameContainsOrCity_NameContainsOrAddressContains
+                    (query, query, query,
+                            new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
+        }
+
         return restaurantPage;
     }
 }
