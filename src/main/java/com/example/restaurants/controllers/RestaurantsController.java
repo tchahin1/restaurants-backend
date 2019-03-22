@@ -54,7 +54,7 @@ public class RestaurantsController {
     public Page<List<Restaurant>> search(@RequestParam String query,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
-        Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantsByNameContainsOrCity_NameContainsOrAddressContains(query, query,
+        Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantsByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCase(query, query,
                 query, new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         return restaurantPage;
     }
@@ -67,7 +67,7 @@ public class RestaurantsController {
                                          @RequestParam Integer size) {
 
         Page<List<Restaurant>> restaurantPage;
-        String query1 = query;
+        /*String query1 = query;
         query="";
 
         String[] strings = query1.split(" ");
@@ -76,7 +76,9 @@ public class RestaurantsController {
             string = string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
             query+=string;
             if(i<strings.length-1) query+=" ";
-        }
+        }*/
+
+
 
         if(stars != 0 && pricing != 0) {
             restaurantPage = searchRepository.findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsAndStarsIs
@@ -89,7 +91,7 @@ public class RestaurantsController {
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
         else{
-            restaurantPage = searchRepository.findRestaurantsByNameContainsOrCity_NameContainsOrAddressContains
+            restaurantPage = searchRepository.findRestaurantsByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCase
                     (query, query, query,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
