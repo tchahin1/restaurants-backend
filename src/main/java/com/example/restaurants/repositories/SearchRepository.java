@@ -12,9 +12,9 @@ import java.util.List;
 public interface SearchRepository extends PagingAndSortingRepository<Restaurant, Long> {
     Page<List<Restaurant>> findRestaurantsByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCase(String name, String city_name, String address, Pageable var1);
 
-    Page<List<Restaurant>> findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingIsOrStarsIs
+    Page<List<Restaurant>> findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingEqualsOrStarsEquals
             (String name, String city_name, String address, Integer pricing, Integer rating, Pageable var1);
 
-    Page<List<Restaurant>> findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingIsAndStarsIs
+    Page<List<Restaurant>> findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingEqualsAndStarsEquals
             (String name, String city_name, String address, Integer pricing, Integer rating, Pageable var1);
 }
