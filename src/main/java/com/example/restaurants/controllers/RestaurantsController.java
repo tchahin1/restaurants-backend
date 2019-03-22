@@ -67,26 +67,14 @@ public class RestaurantsController {
                                          @RequestParam Integer size) {
 
         Page<List<Restaurant>> restaurantPage;
-        /*String query1 = query;
-        query="";
-
-        String[] strings = query1.split(" ");
-        for(int i = 0; i < strings.length; i++){
-            String string = strings[i];
-            string = string.substring(0,1).toUpperCase() + string.substring(1).toLowerCase();
-            query+=string;
-            if(i<strings.length-1) query+=" ";
-        }*/
-
-
 
         if(stars != 0 && pricing != 0) {
-            restaurantPage = searchRepository.findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsAndStarsIs
+            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingIsAndStarsIs
                     (query, query, query, pricing, stars,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
         else if((stars !=0 && pricing == 0) || (stars == 0 && pricing != 0)){
-            restaurantPage = searchRepository.findRestaurantByNameContainsOrCity_NameContainsOrAddressContainsAndPricingIsOrStarsIs
+            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingIsOrStarsIs
                     (query, query, query, pricing, stars,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
