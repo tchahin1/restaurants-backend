@@ -110,38 +110,44 @@ public class ReservationsController {
 
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
+        String startDateTime = date + " " + "08:00";
+        String endDateTime = date + " " + "00:00";
         LocalDateTime localDateTime = LocalDateTime.parse(datetime, DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"));
+        LocalDateTime startingTime = LocalDateTime.parse(startDateTime, DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"));
+        LocalDateTime endingTime = LocalDateTime.parse(endDateTime, DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"));
 
-        Reservations existingReservation = reservationsRepository.findByUser_EmailAndTable_TypeAndTable_Restaurant_Name
-                (username, type, restaurant);
+        if(localDateTime.isAfter(startingTime) && localDateTime.isBefore(endingTime)){
+            Reservations existingReservation = reservationsRepository.findByUser_EmailAndTable_TypeAndTable_Restaurant_Name
+                    (username, type, restaurant);
 
-        if(existingReservation != null) {
-            LocalDateTime timeFrom = existingReservation.getTimeFrom();
-            LocalDateTime timeTo = existingReservation.getTimeTo();
-            System.out.println(localDateTime);
-            System.out.println(timeFrom);
-            System.out.println(timeTo);
-            System.out.println(localDateTime.isAfter(timeFrom));
-            System.out.println(localDateTime.isBefore(timeTo));
-            if(localDateTime.isAfter(timeFrom) && localDateTime.isBefore(timeTo)){
-                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            if(existingReservation != null) {
+                LocalDateTime timeFrom = existingReservation.getTimeFrom();
+                LocalDateTime timeTo = existingReservation.getTimeTo();
+                if(localDateTime.isAfter(timeFrom) && localDateTime.isBefore(timeTo)){
+                    return new ResponseEntity(HttpStatus.BAD_REQUEST);
+                }
+                else return new ResponseEntity(HttpStatus.BAD_GATEWAY);
             }
-            else return new ResponseEntity(HttpStatus.BAD_GATEWAY);
+
+            Reservations takenReservation = reservationsRepository.findByTable_TypeAndTable_Restaurant_Name
+                    (type, restaurant);
+
+            if(takenReservation != null && takenReservation.getUser().getUsername()!=username) {
+                LocalDateTime timeFrom = takenReservation.getTimeFrom();
+                LocalDateTime timeTo = takenReservation.getTimeTo();
+                if(localDateTime.isAfter(timeFrom) && localDateTime.isBefore(timeTo)) {
+                    return new ResponseEntity(takenReservation, HttpStatus.CONFLICT);
+                }
+                else return new ResponseEntity(HttpStatus.BAD_GATEWAY);
+            }
+
+            if(existingReservation == null && takenReservation == null){
+                //TODO: CHECK IF THE TABLE RESERVATION TIME BREAKS INTO ANOTHER RESERVATION!
+                return new ResponseEntity(HttpStatus.OK);
+            }
         }
 
-        Reservations takenReservation = reservationsRepository.findByTable_TypeAndTable_Restaurant_Name
-                (type, restaurant);
-
-        if(takenReservation != null && takenReservation.getUser().getUsername()!=username) {
-            LocalDateTime timeFrom = takenReservation.getTimeFrom();
-            LocalDateTime timeTo = takenReservation.getTimeTo();
-            if(localDateTime.isAfter(timeFrom) && localDateTime.isBefore(timeTo)) {
-                return new ResponseEntity(takenReservation, HttpStatus.CONFLICT);
-            }
-            else return new ResponseEntity(HttpStatus.BAD_GATEWAY);
-        }
-
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.FORBIDDEN);
     }
 
     @GetMapping("/check")
@@ -154,13 +160,15 @@ public class ReservationsController {
 
 
     /*private void algorithm(String time, Integer table){
-        if(time.isAfter("08:00") && time.isBefore("00:00")){
+        if(localDateTimeFrom.isAfter("08:00") && localDateTimeFrom.isBefore("00:00")){ ---DONE
             //todo: do algorithm
-            //todo: first check if there is table that matches the entered one
+            //todo: first check if there is table that matches the entered one FIRST PHASE
             if(table == someTable){
-                //todo: round the entered time
+                //todo: round the entered time  ---DONE
                 //todo: check the entered time
             }
+
+
             else{
                 //todo: try to combine tables to get the nearest best fit
             }
