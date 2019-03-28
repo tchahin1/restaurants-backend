@@ -69,13 +69,13 @@ public class RestaurantsController {
         Page<List<Restaurant>> restaurantPage;
 
         if(stars != 0 && pricing != 0) {
-            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingEqualsAndStarsEquals
-                    (query, query, query, pricing, stars,
+            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseAndPricingAndStarsOrCity_NameContainsIgnoreCaseAndPricingAndStarsOrAddressContainsIgnoreCaseAndPricingAndStars
+                    (query, pricing, stars, query, pricing, stars, query, pricing, stars,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
         else if((stars !=0 && pricing == 0) || (stars == 0 && pricing != 0)){
-            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPricingEqualsOrStarsEquals
-                    (query, query, query, pricing, stars,
+            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseAndPricingOrNameContainsIgnoreCaseAndStarsOrCity_NameContainsIgnoreCaseAndPricingOrCity_NameContainsIgnoreCaseAndStarsOrAddressContainsIgnoreCaseAndPricingOrAddressContainsIgnoreCaseAndStars
+                    (query, pricing, query, stars, query, pricing, query, stars, query, pricing, query, stars,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
         else{
