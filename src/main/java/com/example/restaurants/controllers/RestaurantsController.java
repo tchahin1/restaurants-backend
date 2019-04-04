@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -41,6 +42,11 @@ public class RestaurantsController {
             restorani.remove(randomIndex);
         }
         return restaurantFin;
+    }
+
+    @GetMapping(value = "/find/all")
+    public ResponseEntity getAllRestaurants(){
+        return new ResponseEntity(restaurantsRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/name")
@@ -85,5 +91,23 @@ public class RestaurantsController {
         }
 
         return restaurantPage;
+    }
+
+    @GetMapping("/count")
+    @ResponseStatus(HttpStatus.OK)
+    public long restaurantsCount(){
+        return restaurantsRepository.count();
+    }
+
+    @Transactional
+    @GetMapping(value = "/delete")
+    public ResponseEntity deleteRestaurant(@RequestParam String name) {
+        restaurantsRepository.deleteByName(name);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get/search")
+    public ResponseEntity getRestaurants(@RequestParam String name){
+        return new ResponseEntity(restaurantsRepository.findByNameContainingIgnoreCase(name),HttpStatus.OK);
     }
 }

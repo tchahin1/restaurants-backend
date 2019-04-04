@@ -30,7 +30,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(SIGN_UP_URL, COUNTRIES_URL, CITIES_COUNTRIES_URL, RESTAURANTS_URL, RESTAURANT_URL, SEARCH_URL, TABLES, TABLES_RESTAURANT, RESTAURANT_FILTER).permitAll()
+                .antMatchers(SIGN_UP_URL, USERS_URL, CITIES_URL, COUNTRIES_URL, COUSINES_URL, CITIES_COUNTRIES_URL, RESTAURANTS_URL, RESTAURANTS_ALL_URL, RESTAURANT_URL, SEARCH_URL, TABLES, TABLES_RESTAURANT, RESTAURANT_FILTER, USERS_COUNT, RESTS_COUNT, LOCATIONS_COUNT, USER_DELETE, RESTAURANT_DELETE, LOCATION_DELETE, COUSINE_DELETE, GET_COUSINE, GET_LOCATION, GET_USER, GET_COUSINES, GET_USERS, GET_LOCATIONS, GET_RESTAURANTS, SEARCH_ADMIN, SAVE_COUSINE, EDIT_COUSINE, SAVE_CITY, EDIT_CITY).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))

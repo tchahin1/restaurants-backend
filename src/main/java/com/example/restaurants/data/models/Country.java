@@ -12,7 +12,7 @@ public class Country {
     @Column
     private String name;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

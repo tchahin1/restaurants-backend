@@ -24,7 +24,4 @@ public interface SearchRepository extends PagingAndSortingRepository<Restaurant,
 
     Page<List<Restaurant>> findRestaurantByNameContainsIgnoreCaseAndPricingAndStarsOrCity_NameContainsIgnoreCaseAndPricingAndStarsOrAddressContainsIgnoreCaseAndPricingAndStars
             (String name, Integer pricing, Integer stars, String city_name, Integer pricing1, Integer stars1, String address, Integer pricing2, Integer stars2, Pageable var1);
-
-    /*@Query("select r from Restaurant r where r.name = ?1")
-    Page<List<Restaurant>> findByEmailAddress(String emailAddress);*/
 }

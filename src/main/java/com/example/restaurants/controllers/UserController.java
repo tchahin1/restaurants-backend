@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -50,6 +51,11 @@ public class UserController {
         return new ResponseEntity(usersRepository.findByEmail(username), HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity getUsers(){
+        return new ResponseEntity(usersRepository.findAll(), HttpStatus.OK);
+    }
+
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody UserDTO userDTO) {
 
@@ -73,5 +79,33 @@ public class UserController {
             userDao.save(user);
             return new ResponseEntity(HttpStatus.OK);
         }
+    }
+
+    @GetMapping("/count")
+    @ResponseStatus(HttpStatus.OK)
+    public long usersCount(){
+        return usersRepository.count();
+    }
+
+    @Transactional
+    @GetMapping(value = "/delete")
+    public ResponseEntity deleteUser(@RequestParam String email) {
+        usersRepository.deleteByEmail(email);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get")
+    public ResponseEntity getUser(@RequestParam String email){
+        return new ResponseEntity(usersRepository.findByEmail(email),HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get/search")
+    public ResponseEntity getUsers(@RequestParam String query){
+        return new ResponseEntity(usersRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query),HttpStatus.OK);
+    }
+
+    @GetMapping("/edit")
+    public ResponseEntity edit(@RequestParam Long id){
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
