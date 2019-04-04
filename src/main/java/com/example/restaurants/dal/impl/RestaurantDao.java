@@ -25,4 +25,17 @@ public class RestaurantDao extends BaseDao<Restaurant>{
         query.setParameter("name", name);
         return query.getSingleResult();
     }
+
+    @Transactional(readOnly = true)
+    public Restaurant getRestaurantByPriceOrStars (String name, Integer price, Integer stars) {
+
+        TypedQuery<Restaurant> query =
+                entityManager.createQuery(
+                        "select r from Restaurant r where r.name = :name",
+                        Restaurant.class
+                );
+
+        query.setParameter("name", name);
+        return query.getSingleResult();
+    }
 }

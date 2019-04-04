@@ -11,9 +11,12 @@ public interface ReservationsRepository extends CrudRepository<Reservations, Lon
     Reservations findByUser_EmailAndTable_TypeAndTable_Restaurant_Name
             (String username, Integer type, String restaurant);
 
-    Reservations findByTable_TypeAndTable_Restaurant_Name
+    Reservations findFirstByTable_TypeAndTable_Restaurant_Name
             (Integer type, String restaurant);
 
     Reservations findByTable_TypeAndTable_Restaurant_NameAndTimeFromIsLessThanEqual
             (Integer type, String restaurant, LocalDateTime time);
+
+    Reservations findByTable_TypeAndTable_ReservedAndTimeFromAndTable_Restaurant_Name
+            (Integer type, boolean reserved, LocalDateTime time, String restaurant);
 }

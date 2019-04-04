@@ -15,7 +15,7 @@ public class Cousine {
     @Column(nullable = false)
     private String name;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

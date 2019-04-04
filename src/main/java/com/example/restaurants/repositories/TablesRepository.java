@@ -3,6 +3,7 @@ package com.example.restaurants.repositories;
 import com.example.restaurants.data.models.Tables;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface TablesRepository extends CrudRepository<Tables, Long> {
@@ -10,6 +11,10 @@ public interface TablesRepository extends CrudRepository<Tables, Long> {
 
     List<Tables> findDistinctByRestaurant_Name(String name);
 
-    Tables findByTypeAndReservedIsFalseAndRestaurant_Name(Integer type, String name);
+    Tables findFirstByTypeAndReservedIsFalseAndRestaurant_Name(Integer type, String name);
+
+    Tables findByTypeIsBetween(Integer min, Integer max);
+
+    ArrayList<Tables> findByReservedIsFalseAndRestaurant_Name(String name);
 }
 

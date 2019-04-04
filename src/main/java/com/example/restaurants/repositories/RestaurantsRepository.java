@@ -8,4 +8,10 @@ import java.util.List;
 
 public interface RestaurantsRepository extends CrudRepository<Restaurant, Long>, PagingAndSortingRepository<Restaurant, Long> {
     Restaurant findRestaurantByName(String name);
+
+    void deleteByName(String name);
+
+    List<Restaurant> findByNameContainingIgnoreCase(String name);
+
+    Restaurant findRestaurantById(Long num);
 }

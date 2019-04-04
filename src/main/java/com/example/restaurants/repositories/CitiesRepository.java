@@ -8,4 +8,10 @@ import java.util.List;
 public interface CitiesRepository extends CrudRepository<City, Long> {
     List<City> findByCountryId(Long id);
     City findByName(String name);
+
+    void deleteByName(String name);
+
+    List<City> findByNameContainingIgnoreCase(String name);
+
+    City findCityById(Long num);
 }

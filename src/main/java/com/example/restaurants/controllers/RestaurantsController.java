@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -43,6 +44,11 @@ public class RestaurantsController {
         return restaurantFin;
     }
 
+    @GetMapping(value = "/find/all")
+    public ResponseEntity getAllRestaurants(){
+        return new ResponseEntity(restaurantsRepository.findAll(), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/name")
     public ResponseEntity getRestaurant(@RequestParam("name") String name){
         //return restaurantDao.getRestaurantByName(name);
@@ -69,13 +75,13 @@ public class RestaurantsController {
         Page<List<Restaurant>> restaurantPage;
 
         if(stars != 0 && pricing != 0) {
-            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseAndPricingEqualsAndStarsEquals
-                    (query, query, query, pricing, stars,
+            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseAndPricingAndStarsOrCity_NameContainsIgnoreCaseAndPricingAndStarsOrAddressContainsIgnoreCaseAndPricingAndStars
+                    (query, pricing, stars, query, pricing, stars, query, pricing, stars,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
         else if((stars !=0 && pricing == 0) || (stars == 0 && pricing != 0)){
-            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCaseOrPricingEqualsOrStarsEquals
-                    (query, query, query, pricing, stars,
+            restaurantPage = searchRepository.findRestaurantByNameContainsIgnoreCaseAndPricingOrNameContainsIgnoreCaseAndStarsOrCity_NameContainsIgnoreCaseAndPricingOrCity_NameContainsIgnoreCaseAndStarsOrAddressContainsIgnoreCaseAndPricingOrAddressContainsIgnoreCaseAndStars
+                    (query, pricing, query, stars, query, pricing, query, stars, query, pricing, query, stars,
                             new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         }
         else{
@@ -85,5 +91,23 @@ public class RestaurantsController {
         }
 
         return restaurantPage;
+    }
+
+    @GetMapping("/count")
+    @ResponseStatus(HttpStatus.OK)
+    public long restaurantsCount(){
+        return restaurantsRepository.count();
+    }
+
+    @Transactional
+    @GetMapping(value = "/delete")
+    public ResponseEntity deleteRestaurant(@RequestParam String name) {
+        restaurantsRepository.deleteByName(name);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/get/search")
+    public ResponseEntity getRestaurants(@RequestParam String name){
+        return new ResponseEntity(restaurantsRepository.findByNameContainingIgnoreCase(name),HttpStatus.OK);
     }
 }
