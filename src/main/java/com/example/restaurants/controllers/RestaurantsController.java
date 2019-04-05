@@ -1,9 +1,11 @@
 package com.example.restaurants.controllers;
 
 import com.example.restaurants.dal.impl.RestaurantDao;
+import com.example.restaurants.data.models.City;
+import com.example.restaurants.data.models.Cousine;
+import com.example.restaurants.data.models.Pictures;
 import com.example.restaurants.data.models.Restaurant;
-import com.example.restaurants.repositories.RestaurantsRepository;
-import com.example.restaurants.repositories.SearchRepository;
+import com.example.restaurants.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -30,6 +33,15 @@ public class RestaurantsController {
 
     @Autowired
     private SearchRepository searchRepository;
+
+    @Autowired
+    private CitiesRepository citiesRepository;
+
+    @Autowired
+    private CousinesRepository cousinesRepository;
+
+    @Autowired
+    private PicturesRepository picturesRepository;
 
     @GetMapping(value = "/all")
     public List<Restaurant> getRestaurants(){
@@ -109,5 +121,60 @@ public class RestaurantsController {
     @GetMapping(value = "/get/search")
     public ResponseEntity getRestaurants(@RequestParam String name){
         return new ResponseEntity(restaurantsRepository.findByNameContainingIgnoreCase(name),HttpStatus.OK);
+    }
+
+    @PostMapping("/saveLogo")
+    public ResponseEntity saveLogo(@RequestParam String pictureUrl, @RequestParam Long id){
+        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        Pictures pictures = new Pictures();
+        pictures.setLogoUrl(pictureUrl);
+        pictures.setRestaurant(restaurant);
+        picturesRepository.save(pictures);
+        pictures = picturesRepository.findPicturesByRestaurant_Id(id);
+        return new ResponseEntity(pictures, HttpStatus.OK);
+    }
+
+    @PostMapping("/saveCover")
+    public ResponseEntity saveCover(@RequestParam String pictureUrl, @RequestParam Long id){
+        Pictures pictures = picturesRepository.findPicturesById(id);
+        pictures.setCoverUrl(pictureUrl);
+        picturesRepository.save(pictures);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity saveRestaurants(@RequestParam Integer pricing, @RequestParam String name, @RequestParam String description,
+                                          @RequestParam String category, @RequestParam Long location, @RequestParam String address){
+        Restaurant restaurant = new Restaurant();
+        restaurant.setPricing(pricing);
+        restaurant.setName(name);
+        restaurant.setDescription(description);
+        restaurant.setAddress(address);
+        City city = citiesRepository.findCityById(location);
+        restaurant.setCity(city);
+        restaurantsRepository.save(restaurant);
+        Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+        restaurant = restaurantsRepository.findRestaurantByName(name);
+        cousine.setRestaurant(restaurant);
+        cousinesRepository.save(cousine);
+        return new ResponseEntity(restaurant, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/basicDetails")
+    public ResponseEntity getBasicDetails(@RequestParam String name){
+        Restaurant restaurant = restaurantsRepository.findRestaurantByName(name);
+        return new ResponseEntity(restaurant, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/logo")
+    public ResponseEntity getPictures(@RequestParam Long id){
+        Pictures pictures = picturesRepository.findPicturesByRestaurant_Id(id);
+        return new ResponseEntity(pictures, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/cousine")
+    public ResponseEntity getCousine(@RequestParam Long id){
+        Cousine cousine = cousinesRepository.findFirstByRestaurant_Id(id);
+        return new ResponseEntity(cousine, HttpStatus.OK);
     }
 }

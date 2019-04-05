@@ -30,6 +30,10 @@ public class SecurityConstants {
     public static final String GET_LOCATION = "/cities/get";
     public static final String GET_COUSINE = "/cousines/get";
 
+    public static final String GET_RESTAURANT = "/restaurants/get/basicDetails";
+    public static final String GET_LOGO = "/restaurants/get/logo";
+    public static final String GET_RESTAURANT_COUSINE = "/restaurants/get/cousine";
+
     public static final String GET_COUSINES = "/cousines/get/search";
     public static final String GET_USERS = "/users/get/search";
     public static final String GET_LOCATIONS = "/cities/get/search";
@@ -39,4 +43,10 @@ public class SecurityConstants {
     public static final String EDIT_COUSINE = "/cousines/edit";
     public static final String SAVE_CITY = "/cities/save";
     public static final String EDIT_CITY = "/cities/edit";
+    public static final String EDIT_USER = "/users/edit";
+    public static final String SAVE_RESTAURANT = "/restaurants/save";
+    public static final String EDIT_RESTAURANT = "/restaurants/edit";
+
+    public static final String LOGO = "/restaurants/saveLogo";
+    public static final String COVER = "/restaurants/saveCover";
 }

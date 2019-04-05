@@ -6,7 +6,10 @@ import com.example.restaurants.dal.impl.CityDao;
 import com.example.restaurants.dal.impl.UserDao;
 import com.example.restaurants.data.dtos.UserDTO;
 import com.example.restaurants.data.models.City;
+import com.example.restaurants.data.models.Country;
 import com.example.restaurants.data.models.Users;
+import com.example.restaurants.repositories.CitiesRepository;
+import com.example.restaurants.repositories.CountriesRepository;
 import com.example.restaurants.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +31,11 @@ public class UserController {
     @Autowired
     private CityDao cityDao;
 
-    //jwt
+    @Autowired
+    private CountriesRepository countriesRepository;
+
+    @Autowired
+    private CitiesRepository citiesRepository;
 
     //private UsersRepository usersRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -77,7 +84,7 @@ public class UserController {
             user.setCity(city);
             user.setCountry(city.getCountry());
             userDao.save(user);
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(user, HttpStatus.OK);
         }
     }
 
@@ -105,7 +112,34 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public ResponseEntity edit(@RequestParam Long id){
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity edit(@RequestParam Long id, @RequestParam String name, @RequestParam String last_name, @RequestParam String email, @RequestParam String phone_num, @RequestParam Long country, @RequestParam Long city){
+        Users user = usersRepository.findUsersById(id);
+        if(!(user.getEmail().equals(email))){
+            Users existingUser = usersRepository.findByEmail(email);
+            if(existingUser!=null){
+                user.setName(name);
+                user.setLastName(last_name);
+                user.setEmail(email);
+                user.setPhoneNumber(phone_num);
+                Country existingCountry = countriesRepository.findCountryById(country);
+                City existingCity = citiesRepository.findCityById(city);
+                user.setCity(existingCity);
+                user.setCountry(existingCountry);
+                usersRepository.save(user);
+                return new ResponseEntity(HttpStatus.OK);
+            }
+            else return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+        else{
+            user.setName(name);
+            user.setLastName(last_name);
+            user.setPhoneNumber(phone_num);
+            Country existingCountry = countriesRepository.findCountryById(country);
+            City existingCity = citiesRepository.findCityById(city);
+            user.setCity(existingCity);
+            user.setCountry(existingCountry);
+            usersRepository.save(user);
+            return new ResponseEntity(HttpStatus.OK);
+        }
     }
 }
