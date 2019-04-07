@@ -1,10 +1,7 @@
 package com.example.restaurants.controllers;
 
 import com.example.restaurants.dal.impl.RestaurantDao;
-import com.example.restaurants.data.models.City;
-import com.example.restaurants.data.models.Cousine;
-import com.example.restaurants.data.models.Pictures;
-import com.example.restaurants.data.models.Restaurant;
+import com.example.restaurants.data.models.*;
 import com.example.restaurants.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -42,6 +39,9 @@ public class RestaurantsController {
 
     @Autowired
     private PicturesRepository picturesRepository;
+
+    @Autowired
+    private TablesRepository tablesRepository;
 
     @GetMapping(value = "/all")
     public List<Restaurant> getRestaurants(){
@@ -126,20 +126,45 @@ public class RestaurantsController {
     @PostMapping("/saveLogo")
     public ResponseEntity saveLogo(@RequestParam String pictureUrl, @RequestParam Long id){
         Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
-        Pictures pictures = new Pictures();
-        pictures.setLogoUrl(pictureUrl);
-        pictures.setRestaurant(restaurant);
-        picturesRepository.save(pictures);
-        pictures = picturesRepository.findPicturesByRestaurant_Id(id);
-        return new ResponseEntity(pictures, HttpStatus.OK);
+        Pictures pictures = picturesRepository.findPicturesByRestaurant_Id(id);
+        if(pictures!=null && !(pictures.getLogoUrl().equals(pictureUrl))){
+            pictures.setLogoUrl(pictureUrl);
+            restaurant.setPictureUrl(pictureUrl);
+            picturesRepository.save(pictures);
+            pictures = picturesRepository.findPicturesByRestaurant_Id(id);
+            return new ResponseEntity(pictures, HttpStatus.OK);
+        }
+        else if(pictures!=null && pictures.getLogoUrl().equals(pictureUrl)){
+            return new ResponseEntity(pictures, HttpStatus.OK);
+        }
+        else {
+            pictures = new Pictures();
+            pictures.setLogoUrl(pictureUrl);
+            pictures.setRestaurant(restaurant);
+            picturesRepository.save(pictures);
+            pictures = picturesRepository.findPicturesByRestaurant_Id(id);
+            restaurant.setPictureUrl(pictureUrl);
+            restaurantsRepository.save(restaurant);
+            return new ResponseEntity(pictures, HttpStatus.OK);
+        }
     }
 
     @PostMapping("/saveCover")
     public ResponseEntity saveCover(@RequestParam String pictureUrl, @RequestParam Long id){
         Pictures pictures = picturesRepository.findPicturesById(id);
-        pictures.setCoverUrl(pictureUrl);
-        picturesRepository.save(pictures);
-        return new ResponseEntity(HttpStatus.OK);
+        if(pictures!=null && !(pictures.getCoverUrl().equals(pictureUrl))){
+            pictures.setCoverUrl(pictureUrl);
+            picturesRepository.save(pictures);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        else if(pictures!=null && pictures.getCoverUrl().equals(pictureUrl)){
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        else {
+            pictures.setCoverUrl(pictureUrl);
+            picturesRepository.save(pictures);
+            return new ResponseEntity(HttpStatus.OK);
+        }
     }
 
     @PostMapping("/save")
@@ -148,16 +173,69 @@ public class RestaurantsController {
         Restaurant restaurant = new Restaurant();
         restaurant.setPricing(pricing);
         restaurant.setName(name);
+        restaurant.setStars(0);
         restaurant.setDescription(description);
         restaurant.setAddress(address);
         City city = citiesRepository.findCityById(location);
         restaurant.setCity(city);
         restaurantsRepository.save(restaurant);
         Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+        if(cousine == null){
+            cousine = new Cousine();
+            cousine.setName(category);
+            cousinesRepository.save(cousine);
+            cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+        }
         restaurant = restaurantsRepository.findRestaurantByName(name);
         cousine.setRestaurant(restaurant);
         cousinesRepository.save(cousine);
         return new ResponseEntity(restaurant, HttpStatus.OK);
+    }
+
+    @PostMapping("/edit")
+    public ResponseEntity editRestaurants(@RequestParam Long id, @RequestParam Integer pricing, @RequestParam String name, @RequestParam String description,
+                                          @RequestParam String category, @RequestParam Long location, @RequestParam String address){
+        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        if(restaurant.getAddress().equals(address)) {
+            restaurant.setPricing(pricing);
+            restaurant.setName(name);
+            restaurant.setStars(0);
+            restaurant.setDescription(description);
+            restaurantsRepository.save(restaurant);
+            Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+            if(cousine == null){
+                cousine = new Cousine();
+                cousine.setName(category);
+                cousinesRepository.save(cousine);
+                cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+            }
+            restaurant = restaurantsRepository.findRestaurantByName(name);
+            cousine.setRestaurant(restaurant);
+            cousinesRepository.save(cousine);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        else {
+            restaurant = new Restaurant();
+            restaurant.setPricing(pricing);
+            restaurant.setName(name);
+            restaurant.setStars(0);
+            restaurant.setDescription(description);
+            restaurant.setAddress(address);
+            City city = citiesRepository.findCityById(location);
+            restaurant.setCity(city);
+            restaurantsRepository.save(restaurant);
+            Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+            if(cousine == null){
+                cousine = new Cousine();
+                cousine.setName(category);
+                cousinesRepository.save(cousine);
+                cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
+            }
+            restaurant = restaurantsRepository.findRestaurantByName(name);
+            cousine.setRestaurant(restaurant);
+            cousinesRepository.save(cousine);
+            return new ResponseEntity(restaurant, HttpStatus.OK);
+        }
     }
 
     @GetMapping("/get/basicDetails")
@@ -176,5 +254,74 @@ public class RestaurantsController {
     public ResponseEntity getCousine(@RequestParam Long id){
         Cousine cousine = cousinesRepository.findFirstByRestaurant_Id(id);
         return new ResponseEntity(cousine, HttpStatus.OK);
+    }
+
+    @PostMapping("/save/tables")
+    public ResponseEntity saveTables(@RequestParam Long id, @RequestParam List<Integer> typeArray, @RequestParam List<Integer> ammountArray){
+        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        for(int i=0; i<ammountArray.size(); i++){
+            for(int j=0; j<ammountArray.get(i); j++){
+                Tables tables = new Tables();
+                tables.setType(typeArray.get(i));
+                tables.setRestaurant(restaurant);
+                tables.setReserved(false);
+                tablesRepository.save(tables);
+            }
+        }
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/get/tables")
+    public ResponseEntity getTables(@RequestParam Long id){
+        List<Tables> tables = tablesRepository.findTablesByRestaurant_Id(id);
+        return new ResponseEntity(tables, HttpStatus.OK);
+    }
+
+    @PostMapping("/edit/tables")
+    public ResponseEntity editTables(@RequestParam Long id, @RequestParam List<Integer> typeArray, @RequestParam List<Integer> ammountArray){
+        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        for(int i=0; i<ammountArray.size(); i++){
+            for(int j=0; j<ammountArray.get(i); j++){
+                ArrayList<Tables> existingTables = tablesRepository.findTablesByTypeAndRestaurant_Id(typeArray.get(i), id);
+                if(existingTables!=null && existingTables.size()!=0 && existingTables.size()<ammountArray.get(i)){
+                    int k=0;
+                    while(k<existingTables.size()) {
+                        j++;
+                        k++;
+                    }
+                    while(k<ammountArray.get(i)){
+                        Tables tables = new Tables();
+                        tables.setType(typeArray.get(i));
+                        tables.setRestaurant(restaurant);
+                        tables.setReserved(false);
+                        tablesRepository.save(tables);
+                        k++;
+                    }
+                    break;
+                }
+                else if(existingTables!=null && existingTables.size()!=0 && existingTables.size()>ammountArray.get(i)){
+                    int k=0;
+                    while(k<ammountArray.get(i)) k++;
+                    while(k<existingTables.size()){
+                        Tables table = tablesRepository.findFirstByTypeAndRestaurant_Id(typeArray.get(i), id);
+                        tablesRepository.delete(table);
+                        k++;
+                        j++;
+                    }
+                    break;
+                }
+                else if(existingTables!=null && existingTables.size()!=0 && existingTables.size()==ammountArray.get(i)){
+                    while(j<existingTables.size()) j++;
+                }
+                else {
+                    Tables tables = new Tables();
+                    tables.setType(typeArray.get(i));
+                    tables.setRestaurant(restaurant);
+                    tables.setReserved(false);
+                    tablesRepository.save(tables);
+                }
+            }
+        }
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

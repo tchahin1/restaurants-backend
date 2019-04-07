@@ -13,8 +13,14 @@ public interface TablesRepository extends CrudRepository<Tables, Long> {
 
     Tables findFirstByTypeAndReservedIsFalseAndRestaurant_Name(Integer type, String name);
 
-    Tables findByTypeIsBetween(Integer min, Integer max);
+    List<Tables> findTablesByTypeIsBetween(Integer min, Integer max);
 
     ArrayList<Tables> findByReservedIsFalseAndRestaurant_Name(String name);
+
+    ArrayList<Tables> findTablesByRestaurant_Id(Long num);
+
+    ArrayList<Tables> findTablesByTypeAndRestaurant_Id(Integer type, Long num);
+
+    Tables findFirstByTypeAndRestaurant_Id(Integer type, Long num);
 }
 

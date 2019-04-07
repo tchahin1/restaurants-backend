@@ -106,6 +106,13 @@ public class UserController {
         return new ResponseEntity(usersRepository.findByEmail(email),HttpStatus.OK);
     }
 
+    @GetMapping(value = "/get/role")
+    public ResponseEntity getRole(@RequestParam String email){
+        Users users = usersRepository.findByEmail(email);
+        if(users.isAdmin()) return new ResponseEntity(HttpStatus.OK);
+        else return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
     @GetMapping(value = "/get/search")
     public ResponseEntity getUsers(@RequestParam String query){
         return new ResponseEntity(usersRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query),HttpStatus.OK);

@@ -27,6 +27,7 @@ public class SecurityConstants {
     public static final String COUSINE_DELETE = "/cousines/delete";
     public static final String RESTAURANT_DELETE = "/restaurants/delete";
     public static final String GET_USER = "/users/get";
+    public static final String GET_ROLE = "/users/get/role";
     public static final String GET_LOCATION = "/cities/get";
     public static final String GET_COUSINE = "/cousines/get";
 
@@ -49,4 +50,8 @@ public class SecurityConstants {
 
     public static final String LOGO = "/restaurants/saveLogo";
     public static final String COVER = "/restaurants/saveCover";
+
+    public static final String SAVE_RESTAURANT_TABLES = "/restaurants/save/tables";
+    public static final String GET_RESTAURANT_TABLES = "/restaurants/get/tables";
+    public static final String EDIT_RESTAURANT_TABLES = "/restaurants/edit/tables";
 }

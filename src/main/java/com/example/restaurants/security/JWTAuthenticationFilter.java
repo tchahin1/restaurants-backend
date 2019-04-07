@@ -2,14 +2,18 @@ package com.example.restaurants.security;
 
 import com.auth0.jwt.JWT;
 import com.example.restaurants.data.models.Users;
+import com.example.restaurants.repositories.UsersRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.service.spi.InjectService;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -29,6 +33,7 @@ import static com.example.restaurants.security.SecurityConstants.SECRET;
 import static com.example.restaurants.security.SecurityConstants.TOKEN_PREFIX;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
     private AuthenticationManager authenticationManager;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
