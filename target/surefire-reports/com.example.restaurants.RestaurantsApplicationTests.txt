@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.restaurants.RestaurantsApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.661 s - in com.example.restaurants.RestaurantsApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 42.863 s - in com.example.restaurants.RestaurantsApplicationTests

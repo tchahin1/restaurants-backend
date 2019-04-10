@@ -3,7 +3,6 @@ package com.example.restaurants.repositories;
 import com.example.restaurants.data.models.Restaurant;
 import com.example.restaurants.data.models.Tables;
 import org.springframework.data.repository.CrudRepository;
-import sun.tools.jconsole.Tab;
 
 import java.util.ArrayList;
 import java.util.List;
