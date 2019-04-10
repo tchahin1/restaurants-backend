@@ -57,7 +57,13 @@ public class ReservationsServices {
         Users user = usersRepository.findByEmail(username);
 
         if(offerTables!=null && offerTables.size()!=0){
-            reservation.setTable(offerTables.get(0));
+            Tables tables = new Tables();
+            tables.setReserved(true);
+            tables.setRestaurant(offerTables.get(0).getRestaurant());
+            tables.setType(offerTables.get(0).getType()+offerTables.get(1).getType());
+            tablesRepository.save(tables);
+            List<Tables> tablesRes = tablesRepository.findTablesByTypeAndRestaurant_Id(tables.getType(), tables.getRestaurant().getId());
+            reservation.setTable(tablesRes.get(0));
             reservation.setTimeFrom(localDateTimeFrom);
             reservation.setTimeTo(localDateTimeTo);
             reservation.setUser(user);
@@ -131,11 +137,11 @@ public class ReservationsServices {
         }
 
         else {
-            Reservations existingReservation = reservationsRepository.findByTable_TypeAndTable_Restaurant_NameAndTimeFromIsLessThanEqual
+            List<Reservations> existingReservation = reservationsRepository.findByTable_TypeAndTable_Restaurant_NameAndTimeFromIsLessThanEqual
                     (type, restaurant, localDateTimeWanted);
 
             reservation.setUser(user);
-            reservation.setTable(existingReservation.getTable());
+            reservation.setTable(existingReservation.get(0).getTable());
             reservation.setTimeFrom(localDateTimeFrom);
             reservation.setTimeTo(localDateTimeTo);
 
@@ -149,6 +155,8 @@ public class ReservationsServices {
 
 
     public ResponseEntity checkTable(String date, String time, String username, String restaurant, Integer type){
+        offerTable = null;
+        offerTables = null;
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
         String startDateTime = date + " " + "08:00";

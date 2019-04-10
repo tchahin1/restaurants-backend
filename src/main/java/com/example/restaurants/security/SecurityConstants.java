@@ -54,4 +54,8 @@ public class SecurityConstants {
     public static final String SAVE_RESTAURANT_TABLES = "/restaurants/save/tables";
     public static final String GET_RESTAURANT_TABLES = "/restaurants/get/tables";
     public static final String EDIT_RESTAURANT_TABLES = "/restaurants/edit/tables";
+
+    public static final String GET_ALL_LOCATIONS = "/locations/all";
+    public static final String LOCATIONS_SAVE = "/locations/save";
+    public static final String LOCATIONS_EDIT = "/locations/edit";
 }

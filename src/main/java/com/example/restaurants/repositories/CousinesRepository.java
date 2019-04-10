@@ -21,4 +21,6 @@ public interface CousinesRepository extends CrudRepository<Cousine, Long> {
     Cousine findFirstByNameAndRestaurantIsNull(String name);
 
     Cousine findFirstByRestaurant_Id(Long num);
+
+    List<Cousine> findAllByRestaurant_Id(Long num);
 }

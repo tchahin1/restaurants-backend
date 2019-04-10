@@ -3,8 +3,12 @@ package com.example.restaurants.controllers;
 import com.example.restaurants.dal.impl.CityDao;
 import com.example.restaurants.data.models.City;
 import com.example.restaurants.data.models.Country;
+import com.example.restaurants.data.models.Restaurant;
+import com.example.restaurants.data.models.Users;
 import com.example.restaurants.repositories.CitiesRepository;
 import com.example.restaurants.repositories.CountriesRepository;
+import com.example.restaurants.repositories.RestaurantsRepository;
+import com.example.restaurants.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +29,12 @@ public class CitiesController {
 
     @Autowired
     private CountriesRepository countriesRepository;
+
+    @Autowired
+    private UsersRepository usersRepository;
+
+    @Autowired
+    private RestaurantsRepository restaurantsRepository;
 
     @CrossOrigin
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -50,7 +60,18 @@ public class CitiesController {
     @Transactional
     @GetMapping(value = "/delete")
     public ResponseEntity deleteCity(@RequestParam String name) {
-        citiesRepository.deleteByName(name);
+        City city = citiesRepository.findByName(name);
+        List<Users> users = usersRepository.findAllByCity_Id(city.getId());
+        for(int i=0; i<users.size(); i++){
+            users.get(i).setCountry(null);
+            users.get(i).setCity(null);
+        }
+        List<Restaurant> restaurants = restaurantsRepository.findAllByCity_Id(city.getId());
+        for(int i=0; i<restaurants.size(); i++){
+            restaurants.get(i).setCity(null);
+            restaurants.get(i).setAddress(null);
+        }
+        citiesRepository.delete(city);
         return new ResponseEntity(HttpStatus.OK);
     }
 

@@ -5,18 +5,16 @@ package com.example.restaurants.controllers;
 import com.example.restaurants.dal.impl.CityDao;
 import com.example.restaurants.dal.impl.UserDao;
 import com.example.restaurants.data.dtos.UserDTO;
-import com.example.restaurants.data.models.City;
-import com.example.restaurants.data.models.Country;
-import com.example.restaurants.data.models.Users;
-import com.example.restaurants.repositories.CitiesRepository;
-import com.example.restaurants.repositories.CountriesRepository;
-import com.example.restaurants.repositories.UsersRepository;
+import com.example.restaurants.data.models.*;
+import com.example.restaurants.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -36,6 +34,12 @@ public class UserController {
 
     @Autowired
     private CitiesRepository citiesRepository;
+
+    @Autowired
+    private ReviewsRepository reviewsRepository;
+
+    @Autowired
+    private ReservationsRepository reservationsRepository;
 
     //private UsersRepository usersRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -97,6 +101,15 @@ public class UserController {
     @Transactional
     @GetMapping(value = "/delete")
     public ResponseEntity deleteUser(@RequestParam String email) {
+        Users users = usersRepository.findByEmail(email);
+        List<Review> reviews = reviewsRepository.findAllByUser(users);
+        for(int i=0; i<reviews.size(); i++){
+            reviewsRepository.delete(reviews.get(i));
+        }
+        List<Reservations> reservations = reservationsRepository.findAllByUser(users);
+        for(int i=0; i<reservations.size(); i++){
+            reservationsRepository.delete(reservations.get(i));
+        }
         usersRepository.deleteByEmail(email);
         return new ResponseEntity(HttpStatus.OK);
     }

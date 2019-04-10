@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/reservations")
 public class ReservationsController {
@@ -61,8 +63,13 @@ public class ReservationsController {
 
     @GetMapping("/check")
     public ResponseEntity check(@RequestParam String restaurant, @RequestParam String user){
-        Reservations reservations = reservationsRepository.findByUser_EmailAndTable_Restaurant_Name(user, restaurant);
-        if(reservations!=null) return new ResponseEntity(reservations, HttpStatus.BAD_REQUEST);
+        List<Reservations> reservations = reservationsRepository.findByUser_EmailAndTable_Restaurant_Name(user, restaurant);
+        if(reservations!=null && reservations.size()!=0) {
+            int i;
+            for(i=0; i<reservations.size(); i++);
+            i-=1;
+            return new ResponseEntity(reservations.get(i), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity(reservations, HttpStatus.OK);
     }
 }

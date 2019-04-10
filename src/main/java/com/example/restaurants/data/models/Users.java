@@ -25,11 +25,11 @@ public class Users {
     private String email;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn
     private Country country;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn
     private City city;
 
     private Boolean admin;

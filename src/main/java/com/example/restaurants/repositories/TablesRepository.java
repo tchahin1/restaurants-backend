@@ -1,7 +1,9 @@
 package com.example.restaurants.repositories;
 
+import com.example.restaurants.data.models.Restaurant;
 import com.example.restaurants.data.models.Tables;
 import org.springframework.data.repository.CrudRepository;
+import sun.tools.jconsole.Tab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,5 +24,7 @@ public interface TablesRepository extends CrudRepository<Tables, Long> {
     ArrayList<Tables> findTablesByTypeAndRestaurant_Id(Integer type, Long num);
 
     Tables findFirstByTypeAndRestaurant_Id(Integer type, Long num);
+
+    List<Tables> findAllByRestaurant(Restaurant restaurant);
 }
 

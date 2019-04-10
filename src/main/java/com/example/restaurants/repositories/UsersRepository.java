@@ -16,4 +16,6 @@ public interface UsersRepository extends CrudRepository<Users, Long> {
     List<Users> findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(String query, String query1);
 
     Users findUsersById(Long num);
+
+    List<Users> findAllByCity_Id(Long num);
 }

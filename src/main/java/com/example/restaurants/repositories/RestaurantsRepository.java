@@ -14,4 +14,8 @@ public interface RestaurantsRepository extends CrudRepository<Restaurant, Long>,
     List<Restaurant> findByNameContainingIgnoreCase(String name);
 
     Restaurant findRestaurantById(Long num);
+
+    Restaurant findFirstByName(String name);
+
+    List<Restaurant> findAllByCity_Id(Long num);
 }

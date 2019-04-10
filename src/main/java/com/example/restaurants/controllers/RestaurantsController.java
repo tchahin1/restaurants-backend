@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import sun.tools.jconsole.Tab;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -42,6 +43,15 @@ public class RestaurantsController {
 
     @Autowired
     private TablesRepository tablesRepository;
+
+    @Autowired
+    private ReservationsRepository reservationsRepository;
+
+    @Autowired
+    private ReviewsRepository reviewsRepository;
+
+    @Autowired
+    private LocationsRepository locationsRepository;
 
     @GetMapping(value = "/all")
     public List<Restaurant> getRestaurants(){
@@ -114,7 +124,28 @@ public class RestaurantsController {
     @Transactional
     @GetMapping(value = "/delete")
     public ResponseEntity deleteRestaurant(@RequestParam String name) {
-        restaurantsRepository.deleteByName(name);
+        Restaurant restaurant = restaurantsRepository.findFirstByName(name);
+        List<Tables> tables = tablesRepository.findAllByRestaurant(restaurant);
+        for(int i=0; i<tables.size(); i++){
+            List<Reservations> reservations = reservationsRepository.findAllByTable_Id(tables.get(i).getId());
+            for(int j=0; j<reservations.size(); j++){
+                reservationsRepository.delete(reservations.get(j));
+            }
+            tablesRepository.delete(tables.get(i));
+        }
+        Pictures pictures = picturesRepository.findPicturesByRestaurant_Id(restaurant.getId());
+        if(pictures!=null) pictures.setRestaurant(null);
+        List<Cousine> cousine = cousinesRepository.findAllByRestaurant_Id(restaurant.getId());
+        for(int i=0; i<cousine.size(); i++){
+            cousine.get(i).setRestaurant(null);
+        }
+        List<Review> review = reviewsRepository.findAllByRestaurant(restaurant);
+        for(int i=0; i<review.size(); i++){
+            reviewsRepository.delete(review.get(i));
+        }
+        Locations locations = locationsRepository.findByRestaurant_Id(restaurant.getId());
+        if(locations!=null) locations.setRestaurant(null);
+        restaurantsRepository.delete(restaurant);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -152,7 +183,13 @@ public class RestaurantsController {
     @PostMapping("/saveCover")
     public ResponseEntity saveCover(@RequestParam String pictureUrl, @RequestParam Long id){
         Pictures pictures = picturesRepository.findPicturesById(id);
-        if(pictures!=null && !(pictures.getCoverUrl().equals(pictureUrl))){
+        if(pictures!=null && pictures.getCoverUrl()==null){
+            pictures.setCoverUrl(pictureUrl);
+            picturesRepository.save(pictures);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+
+        else if(pictures!=null && !(pictures.getCoverUrl().equals(pictureUrl))){
             pictures.setCoverUrl(pictureUrl);
             picturesRepository.save(pictures);
             return new ResponseEntity(HttpStatus.OK);
