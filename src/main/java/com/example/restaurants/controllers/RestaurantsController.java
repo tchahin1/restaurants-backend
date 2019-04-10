@@ -134,7 +134,10 @@ public class RestaurantsController {
             tablesRepository.delete(tables.get(i));
         }
         Pictures pictures = picturesRepository.findPicturesByRestaurant_Id(restaurant.getId());
-        if(pictures!=null) pictures.setRestaurant(null);
+        if(pictures!=null) {
+            pictures.setRestaurant(null);
+            picturesRepository.delete(pictures);
+        }
         List<Cousine> cousine = cousinesRepository.findAllByRestaurant_Id(restaurant.getId());
         for(int i=0; i<cousine.size(); i++){
             cousine.get(i).setRestaurant(null);
@@ -144,7 +147,10 @@ public class RestaurantsController {
             reviewsRepository.delete(review.get(i));
         }
         Locations locations = locationsRepository.findByRestaurant_Id(restaurant.getId());
-        if(locations!=null) locations.setRestaurant(null);
+        if(locations!=null) {
+            locations.setRestaurant(null);
+            locationsRepository.delete(locations);
+        }
         restaurantsRepository.delete(restaurant);
         return new ResponseEntity(HttpStatus.OK);
     }
