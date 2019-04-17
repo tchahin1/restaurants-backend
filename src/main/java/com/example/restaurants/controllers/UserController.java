@@ -24,16 +24,16 @@ public class UserController {
     private UserDao userDao;
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private CityDao cityDao;
 
     @Autowired
-    private CountriesRepository countriesRepository;
+    private CountryRepository countryRepository;
 
     @Autowired
-    private CitiesRepository citiesRepository;
+    private CityRepository cityRepository;
 
     @Autowired
     private ReviewsRepository reviewsRepository;
@@ -41,12 +41,12 @@ public class UserController {
     @Autowired
     private ReservationsRepository reservationsRepository;
 
-    //private UsersRepository usersRepository;
+    //private UserRepository userRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserController(UsersRepository usersRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.usersRepository = usersRepository;
+    public UserController(UserRepository userRepository,
+						  BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -54,23 +54,23 @@ public class UserController {
     public void signUp(@RequestBody Users user) {
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        usersRepository.save(user);
+        userRepository.save(user);
     }
 
     @GetMapping("/id")
     public ResponseEntity getId(@RequestParam String username){
-        return new ResponseEntity(usersRepository.findByEmail(username), HttpStatus.OK);
+        return new ResponseEntity(userRepository.findByEmail(username), HttpStatus.OK);
     }
 
     @GetMapping("/all")
     public ResponseEntity getUsers(){
-        return new ResponseEntity(usersRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity(userRepository.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody UserDTO userDTO) {
 
-        Users existingUser = usersRepository.findByEmail(userDTO.getEmail());
+        Users existingUser = userRepository.findByEmail(userDTO.getEmail());
         if(existingUser!=null){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
@@ -95,13 +95,13 @@ public class UserController {
     @GetMapping("/count")
     @ResponseStatus(HttpStatus.OK)
     public long usersCount(){
-        return usersRepository.count();
+        return userRepository.count();
     }
 
     @Transactional
     @GetMapping(value = "/delete")
     public ResponseEntity deleteUser(@RequestParam String email) {
-        Users users = usersRepository.findByEmail(email);
+        Users users = userRepository.findByEmail(email);
         List<Review> reviews = reviewsRepository.findAllByUser(users);
         for(int i=0; i<reviews.size(); i++){
             reviewsRepository.delete(reviews.get(i));
@@ -110,42 +110,42 @@ public class UserController {
         for(int i=0; i<reservations.size(); i++){
             reservationsRepository.delete(reservations.get(i));
         }
-        usersRepository.deleteByEmail(email);
+        userRepository.deleteByEmail(email);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/get")
     public ResponseEntity getUser(@RequestParam String email){
-        return new ResponseEntity(usersRepository.findByEmail(email),HttpStatus.OK);
+        return new ResponseEntity(userRepository.findByEmail(email),HttpStatus.OK);
     }
 
     @GetMapping(value = "/get/role")
     public ResponseEntity getRole(@RequestParam String email){
-        Users users = usersRepository.findByEmail(email);
+        Users users = userRepository.findByEmail(email);
         if(users.isAdmin()) return new ResponseEntity(HttpStatus.OK);
         else return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(value = "/get/search")
     public ResponseEntity getUsers(@RequestParam String query){
-        return new ResponseEntity(usersRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query),HttpStatus.OK);
+        return new ResponseEntity(userRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query),HttpStatus.OK);
     }
 
     @GetMapping("/edit")
     public ResponseEntity edit(@RequestParam Long id, @RequestParam String name, @RequestParam String last_name, @RequestParam String email, @RequestParam String phone_num, @RequestParam Long country, @RequestParam Long city){
-        Users user = usersRepository.findUsersById(id);
+        Users user = userRepository.findUsersById(id);
         if(!(user.getEmail().equals(email))){
-            Users existingUser = usersRepository.findByEmail(email);
+            Users existingUser = userRepository.findByEmail(email);
             if(existingUser!=null){
                 user.setName(name);
                 user.setLastName(last_name);
                 user.setEmail(email);
                 user.setPhoneNumber(phone_num);
-                Country existingCountry = countriesRepository.findCountryById(country);
-                City existingCity = citiesRepository.findCityById(city);
+                Country existingCountry = countryRepository.findCountryById(country);
+                City existingCity = cityRepository.findCityById(city);
                 user.setCity(existingCity);
                 user.setCountry(existingCountry);
-                usersRepository.save(user);
+                userRepository.save(user);
                 return new ResponseEntity(HttpStatus.OK);
             }
             else return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -154,11 +154,11 @@ public class UserController {
             user.setName(name);
             user.setLastName(last_name);
             user.setPhoneNumber(phone_num);
-            Country existingCountry = countriesRepository.findCountryById(country);
-            City existingCity = citiesRepository.findCityById(city);
+            Country existingCountry = countryRepository.findCountryById(country);
+            City existingCity = cityRepository.findCityById(city);
             user.setCity(existingCity);
             user.setCountry(existingCountry);
-            usersRepository.save(user);
+            userRepository.save(user);
             return new ResponseEntity(HttpStatus.OK);
         }
     }

@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CountriesRepository extends CrudRepository<Country, Long> {
+public interface CountryRepository extends CrudRepository<Country, Long> {
     Country findCountryById(Long id);
     Country findByName(String name);
 

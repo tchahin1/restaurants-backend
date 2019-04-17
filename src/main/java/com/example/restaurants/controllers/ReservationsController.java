@@ -3,7 +3,7 @@ package com.example.restaurants.controllers;
 import com.example.restaurants.data.models.Reservations;
 import com.example.restaurants.repositories.ReservationsRepository;
 import com.example.restaurants.repositories.TablesRepository;
-import com.example.restaurants.repositories.UsersRepository;
+import com.example.restaurants.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class ReservationsController {
     TablesRepository tablesRepository;
 
     @Autowired
-    UsersRepository usersRepository;
+	UserRepository userRepository;
 
     @Autowired
     ReservationsServices reservationsServices;

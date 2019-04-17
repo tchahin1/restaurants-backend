@@ -22,23 +22,23 @@ public class SearchController {
     private CousinesRepository cousinesRepository;
 
     @Autowired
-    private RestaurantsRepository restaurantsRepository;
+    private RestaurantRepository restaurantRepository;
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private CitiesRepository citiesRepository;
+    private CityRepository cityRepository;
 
     @GetMapping(value = "/get")
     public ResponseEntity getCities(@RequestParam String query){
         /*List<Cousine> cousines = cousinesRepository.findByNameContainingIgnoreCase(query);
         if(cousines==null || cousines.size()==0){
-            List<City> cities = citiesRepository.findByNameContainingIgnoreCase(query);
+            List<City> cities = cityRepository.findByNameContainingIgnoreCase(query);
             if(cities==null || cities.size()==0){
-                List<Restaurant> restaurants = restaurantsRepository.findByNameContainingIgnoreCase(query);
+                List<Restaurant> restaurants = restaurantRepository.findByNameContainingIgnoreCase(query);
                 if(restaurants==null || restaurants.size()==0){
-                    List<Users> users = usersRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query);
+                    List<Users> users = userRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query);
                     if(users!=null) return new ResponseEntity(users, HttpStatus.OK);
                 }
                 else return new ResponseEntity(restaurants, HttpStatus.OK);
@@ -52,9 +52,9 @@ public class SearchController {
 
         ArrayList<Object> result = new ArrayList <Object>();
         List<Cousine> cousines = cousinesRepository.findByNameContainingIgnoreCase(query);
-        List<City> cities = citiesRepository.findByNameContainingIgnoreCase(query);
-        List<Restaurant> restaurants = restaurantsRepository.findByNameContainingIgnoreCase(query);
-        List<Users> users = usersRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query);
+        List<City> cities = cityRepository.findByNameContainingIgnoreCase(query);
+        List<Restaurant> restaurants = restaurantRepository.findByNameContainingIgnoreCase(query);
+        List<Users> users = userRepository.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query);
         for(int i=0; i<cousines.size(); i++){
             result.add(cousines.get(i));
         }

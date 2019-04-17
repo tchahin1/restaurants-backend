@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -26,13 +25,13 @@ public class RestaurantsController {
     private RestaurantDao restaurantDao;
 
     @Autowired
-    private RestaurantsRepository restaurantsRepository;
+    private RestaurantRepository restaurantRepository;
 
     @Autowired
     private SearchRepository searchRepository;
 
     @Autowired
-    private CitiesRepository citiesRepository;
+    private CityRepository cityRepository;
 
     @Autowired
     private CousinesRepository cousinesRepository;
@@ -67,13 +66,13 @@ public class RestaurantsController {
 
     @GetMapping(value = "/find/all")
     public ResponseEntity getAllRestaurants(){
-        return new ResponseEntity(restaurantsRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity(restaurantRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/name")
     public ResponseEntity getRestaurant(@RequestParam("name") String name){
         //return restaurantDao.getRestaurantByName(name);
-        Restaurant restaurants = restaurantsRepository.findRestaurantByName(name);
+        Restaurant restaurants = restaurantRepository.findRestaurantByName(name);
         return new ResponseEntity(restaurants, HttpStatus.OK);
     }
 
@@ -117,13 +116,13 @@ public class RestaurantsController {
     @GetMapping("/count")
     @ResponseStatus(HttpStatus.OK)
     public long restaurantsCount(){
-        return restaurantsRepository.count();
+        return restaurantRepository.count();
     }
 
     @Transactional
     @GetMapping(value = "/delete")
     public ResponseEntity deleteRestaurant(@RequestParam String name) {
-        Restaurant restaurant = restaurantsRepository.findFirstByName(name);
+        Restaurant restaurant = restaurantRepository.findFirstByName(name);
         List<Tables> tables = tablesRepository.findAllByRestaurant(restaurant);
         for(int i=0; i<tables.size(); i++){
             List<Reservations> reservations = reservationsRepository.findAllByTable_Id(tables.get(i).getId());
@@ -150,18 +149,18 @@ public class RestaurantsController {
             locations.setRestaurant(null);
             locationsRepository.delete(locations);
         }
-        restaurantsRepository.delete(restaurant);
+        restaurantRepository.delete(restaurant);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/get/search")
     public ResponseEntity getRestaurants(@RequestParam String name){
-        return new ResponseEntity(restaurantsRepository.findByNameContainingIgnoreCase(name),HttpStatus.OK);
+        return new ResponseEntity(restaurantRepository.findByNameContainingIgnoreCase(name),HttpStatus.OK);
     }
 
     @PostMapping("/saveLogo")
     public ResponseEntity saveLogo(@RequestParam String pictureUrl, @RequestParam Long id){
-        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        Restaurant restaurant = restaurantRepository.findRestaurantById(id);
         Pictures pictures = picturesRepository.findPicturesByRestaurant_Id(id);
         if(pictures!=null && !(pictures.getLogoUrl().equals(pictureUrl))){
             pictures.setLogoUrl(pictureUrl);
@@ -180,7 +179,7 @@ public class RestaurantsController {
             picturesRepository.save(pictures);
             pictures = picturesRepository.findPicturesByRestaurant_Id(id);
             restaurant.setPictureUrl(pictureUrl);
-            restaurantsRepository.save(restaurant);
+            restaurantRepository.save(restaurant);
             return new ResponseEntity(pictures, HttpStatus.OK);
         }
     }
@@ -218,9 +217,9 @@ public class RestaurantsController {
         restaurant.setStars(0);
         restaurant.setDescription(description);
         restaurant.setAddress(address);
-        City city = citiesRepository.findCityById(location);
+        City city = cityRepository.findCityById(location);
         restaurant.setCity(city);
-        restaurantsRepository.save(restaurant);
+        restaurantRepository.save(restaurant);
         Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
         if(cousine == null){
             cousine = new Cousine();
@@ -228,7 +227,7 @@ public class RestaurantsController {
             cousinesRepository.save(cousine);
             cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
         }
-        restaurant = restaurantsRepository.findRestaurantByName(name);
+        restaurant = restaurantRepository.findRestaurantByName(name);
         cousine.setRestaurant(restaurant);
         cousinesRepository.save(cousine);
         return new ResponseEntity(restaurant, HttpStatus.OK);
@@ -237,13 +236,13 @@ public class RestaurantsController {
     @PostMapping("/edit")
     public ResponseEntity editRestaurants(@RequestParam Long id, @RequestParam Integer pricing, @RequestParam String name, @RequestParam String description,
                                           @RequestParam String category, @RequestParam Long location, @RequestParam String address){
-        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        Restaurant restaurant = restaurantRepository.findRestaurantById(id);
         if(restaurant.getAddress().equals(address)) {
             restaurant.setPricing(pricing);
             restaurant.setName(name);
             restaurant.setStars(0);
             restaurant.setDescription(description);
-            restaurantsRepository.save(restaurant);
+            restaurantRepository.save(restaurant);
             Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
             if(cousine == null){
                 cousine = new Cousine();
@@ -251,7 +250,7 @@ public class RestaurantsController {
                 cousinesRepository.save(cousine);
                 cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
             }
-            restaurant = restaurantsRepository.findRestaurantByName(name);
+            restaurant = restaurantRepository.findRestaurantByName(name);
             cousine.setRestaurant(restaurant);
             cousinesRepository.save(cousine);
             return new ResponseEntity(HttpStatus.OK);
@@ -263,9 +262,9 @@ public class RestaurantsController {
             restaurant.setStars(0);
             restaurant.setDescription(description);
             restaurant.setAddress(address);
-            City city = citiesRepository.findCityById(location);
+            City city = cityRepository.findCityById(location);
             restaurant.setCity(city);
-            restaurantsRepository.save(restaurant);
+            restaurantRepository.save(restaurant);
             Cousine cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
             if(cousine == null){
                 cousine = new Cousine();
@@ -273,7 +272,7 @@ public class RestaurantsController {
                 cousinesRepository.save(cousine);
                 cousine = cousinesRepository.findFirstByNameAndRestaurantIsNull(category);
             }
-            restaurant = restaurantsRepository.findRestaurantByName(name);
+            restaurant = restaurantRepository.findRestaurantByName(name);
             cousine.setRestaurant(restaurant);
             cousinesRepository.save(cousine);
             return new ResponseEntity(restaurant, HttpStatus.OK);
@@ -282,7 +281,7 @@ public class RestaurantsController {
 
     @GetMapping("/get/basicDetails")
     public ResponseEntity getBasicDetails(@RequestParam String name){
-        Restaurant restaurant = restaurantsRepository.findRestaurantByName(name);
+        Restaurant restaurant = restaurantRepository.findRestaurantByName(name);
         return new ResponseEntity(restaurant, HttpStatus.OK);
     }
 
@@ -300,7 +299,7 @@ public class RestaurantsController {
 
     @PostMapping("/save/tables")
     public ResponseEntity saveTables(@RequestParam Long id, @RequestParam List<Integer> typeArray, @RequestParam List<Integer> ammountArray){
-        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        Restaurant restaurant = restaurantRepository.findRestaurantById(id);
         for(int i=0; i<ammountArray.size(); i++){
             for(int j=0; j<ammountArray.get(i); j++){
                 Tables tables = new Tables();
@@ -321,7 +320,7 @@ public class RestaurantsController {
 
     @PostMapping("/edit/tables")
     public ResponseEntity editTables(@RequestParam Long id, @RequestParam List<Integer> typeArray, @RequestParam List<Integer> ammountArray){
-        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        Restaurant restaurant = restaurantRepository.findRestaurantById(id);
         for(int i=0; i<ammountArray.size(); i++){
             for(int j=0; j<ammountArray.get(i); j++){
                 ArrayList<Tables> existingTables = tablesRepository.findTablesByTypeAndRestaurant_Id(typeArray.get(i), id);
