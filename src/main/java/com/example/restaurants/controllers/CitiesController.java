@@ -1,126 +1,208 @@
 package com.example.restaurants.controllers;
 
-import com.example.restaurants.dal.impl.CityDao;
+import com.example.restaurants.data.commons.Response;
 import com.example.restaurants.data.models.City;
 import com.example.restaurants.data.models.Country;
 import com.example.restaurants.data.models.Restaurant;
 import com.example.restaurants.data.models.Users;
-import com.example.restaurants.repositories.CitiesRepository;
-import com.example.restaurants.repositories.CountriesRepository;
-import com.example.restaurants.repositories.RestaurantsRepository;
-import com.example.restaurants.repositories.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.restaurants.repositories.CityRepository;
+import com.example.restaurants.repositories.CountryRepository;
+import com.example.restaurants.repositories.RestaurantRepository;
+import com.example.restaurants.repositories.UserRepository;
+import com.example.restaurants.services.CityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/cities")
 public class CitiesController {
 
-    @Autowired
-    private CityDao cityDao; // repo
+	private final CityRepository cityRepository;
 
-    @Autowired
-    private CitiesRepository citiesRepository;
+	private final CountryRepository countryRepository;
 
-    @Autowired
-    private CountriesRepository countriesRepository;
+	private final UserRepository userRepository;
 
-    @Autowired
-    private UsersRepository usersRepository;
+	private final RestaurantRepository restaurantRepository;
 
-    @Autowired
-    private RestaurantsRepository restaurantsRepository;
+	private final CityService cityService;
 
-    @CrossOrigin
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public List<City> getAllCities(){
-        return cityDao.getAll();
-    }
+	public CitiesController(CityRepository cityRepository, CountryRepository countryRepository, UserRepository userRepository, RestaurantRepository restaurantRepository, CityService cityService) {
+		this.cityRepository = cityRepository;
+		this.countryRepository = countryRepository;
+		this.userRepository = userRepository;
+		this.restaurantRepository = restaurantRepository;
+		this.cityService = cityService;
+	}
 
-    @CrossOrigin
-    @RequestMapping(value = "/country", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.OK)
-    public List<City> getCountryCities(@RequestBody Country country){
-        return cityDao.getCityByCountry(country.getName(), country.getId());
-    }
+	@GetMapping()
+	public ResponseEntity getAll() {
+		Iterable<City> all = cityRepository.findAll();
+		List<City> cities = new ArrayList<>();
+		all.forEach(cities::add);
 
-    @CrossOrigin
-    @GetMapping("/count")
-    @ResponseStatus(HttpStatus.OK)
-    public long getCitiesCount(){
-        return citiesRepository.count();
-    }
+		Response response = Response.builder()
+			.success(true)
+			.data(cities)
+			.build();
 
-    @Transactional
-    @GetMapping(value = "/delete")
-    public ResponseEntity deleteCity(@RequestParam String name) {
-        City city = citiesRepository.findByName(name);
-        List<Users> users = usersRepository.findAllByCity_Id(city.getId());
-        for(int i=0; i<users.size(); i++){
-            users.get(i).setCountry(null);
-            users.get(i).setCity(null);
-        }
-        List<Restaurant> restaurants = restaurantsRepository.findAllByCity_Id(city.getId());
-        for(int i=0; i<restaurants.size(); i++){
-            restaurants.get(i).setCity(null);
-            restaurants.get(i).setAddress(null);
-        }
-        citiesRepository.delete(city);
-        return new ResponseEntity(HttpStatus.OK);
-    }
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
 
-    @GetMapping(value = "/get")
-    public ResponseEntity getCity(@RequestParam String name){
-        return new ResponseEntity(citiesRepository.findByName(name), HttpStatus.OK);
-    }
+	@GetMapping("/byId")
+	public ResponseEntity getById(@RequestParam Long id) {
+		Optional<City> city = cityRepository.findById(id);
 
-    @GetMapping(value = "/get/search")
-    public ResponseEntity getCities(@RequestParam String name){
-        return new ResponseEntity(citiesRepository.findByNameContainingIgnoreCase(name),HttpStatus.OK);
-    }
+		if (!city.isPresent()) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("City not found.")
+					.build(), HttpStatus.NOT_FOUND);
+		}
 
-    @GetMapping(value = "/save")
-    public ResponseEntity saveCity(@RequestParam String city, @RequestParam String country){
-        City existingCity = citiesRepository.findByName(city);
-        if(existingCity!=null) return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        City cities = new City();
-        Country existingCountry = countriesRepository.findCountryByNameContainingIgnoreCaseOrNameIsLikeIgnoreCase(country, country);
-        if(existingCountry == null){
-            Country countryTmp = new Country();
-            countryTmp.setName(country);
-            countriesRepository.save(countryTmp);
-            countryTmp = countriesRepository.findByName(country);
-            cities.setName(city);
-            cities.setCountry(countryTmp);
-            citiesRepository.save(cities);
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        else{
-            cities.setName(city);
-            cities.setCountry(existingCountry);
-            citiesRepository.save(cities);
-            return new ResponseEntity(HttpStatus.OK);
-        }
-    }
+		return new ResponseEntity<>(
+			Response.builder()
+				.success(true)
+				.data(city)
+				.build(), HttpStatus.OK);
+	}
 
-    @GetMapping(value = "/edit")
-    public ResponseEntity editCity(@RequestParam String name, @RequestParam Long id){
-        City existingCity = citiesRepository.findCityById(id);
-        if(!(existingCity.getName().equals(name))) {
-            City cityTmp = citiesRepository.findByName(name);
-            if(cityTmp==null) {
-                existingCity.setName(name);
-                citiesRepository.save(existingCity);
-                return new ResponseEntity(HttpStatus.OK);
-            }
-            else return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity(HttpStatus.OK);
-    }
+	@GetMapping("/byName")
+	public ResponseEntity getByName(@RequestParam String name) {
+		List<City> cities = cityRepository.findByNameContainingIgnoreCase(name);
+
+		return new ResponseEntity<>(
+			Response.builder()
+				.success(true)
+				.data(cities)
+				.build(), HttpStatus.OK);
+	}
+
+	@GetMapping("/byCountry")
+	public ResponseEntity getByCountry(@RequestParam Long countryId) {
+		List<City> cities = cityRepository.findByCountryId(countryId);
+
+		Response response = Response.builder()
+			.success(true)
+			.data(cities)
+			.build();
+
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/count")
+	public long getCount() {
+		return cityRepository.count();
+	}
+
+	@PostMapping()
+	public ResponseEntity create(@RequestBody City city) {
+		if (!cityService.isValid(city)) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("City not valid.")
+					.build(), HttpStatus.BAD_REQUEST);
+		}
+
+		Optional<Country> country = countryRepository.findById(city.getCountry().getId());
+		if (!country.isPresent()) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("Country not found.")
+					.build(), HttpStatus.BAD_REQUEST);
+		}
+
+		City c = new City();
+		c.setName(city.getName());
+		c.setCountry(country.get());
+		cityRepository.save(c);
+
+		return new ResponseEntity<>(
+			Response.builder()
+				.success(true)
+				.data(c)
+				.message("New city successfully added.")
+				.build(), HttpStatus.OK);
+	}
+
+	@PutMapping()
+	public ResponseEntity edit(@RequestBody City city) {
+		if (!cityService.isValid(city)) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("City not valid.")
+					.build(), HttpStatus.BAD_REQUEST);
+		}
+
+		Optional<City> c = cityRepository.findById(city.getId());
+		if (!c.isPresent()) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("City not found.")
+					.build(), HttpStatus.BAD_REQUEST);
+		}
+
+		Optional<Country> country = countryRepository.findById(city.getCountry().getId());
+		if (!country.isPresent()) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("Country not found.")
+					.build(), HttpStatus.BAD_REQUEST);
+		}
+
+		c.get().setName(city.getName());
+		c.get().setCountry(country.get());
+		cityRepository.save(c.get());
+
+		return new ResponseEntity<>(
+			Response.builder()
+				.success(true)
+				.data(city)
+				.message("City successfully updated.")
+				.build(), HttpStatus.OK);
+	}
+
+	@DeleteMapping()
+	public ResponseEntity delete(@RequestParam Long id) {
+		Optional<City> city = cityRepository.findById(id);
+
+		if (!city.isPresent()) {
+			return new ResponseEntity<>(
+				Response.builder()
+					.success(false)
+					.message("City not found.")
+					.build(), HttpStatus.BAD_REQUEST);
+		}
+
+		List<Users> users = userRepository.findByCityId(city.get().getId());
+		users.forEach(user -> {
+			user.setCountry(null);
+			user.setCity(null);
+		});
+
+		List<Restaurant> restaurants = restaurantRepository.findByCityId(city.get().getId());
+		restaurants.forEach(restaurant -> {
+			restaurant.setCity(null);
+			restaurant.setAddress(null);
+		});
+
+		cityRepository.delete(city.get());
+
+		return new ResponseEntity<>(
+			Response.builder()
+				.success(true)
+				.message("City successfully deleted.")
+				.build(), HttpStatus.OK);
+	}
 }

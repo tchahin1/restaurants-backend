@@ -6,7 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface RestaurantsRepository extends CrudRepository<Restaurant, Long>, PagingAndSortingRepository<Restaurant, Long> {
+public interface RestaurantRepository extends CrudRepository<Restaurant, Long>, PagingAndSortingRepository<Restaurant, Long> {
     Restaurant findRestaurantByName(String name);
 
     void deleteByName(String name);
@@ -17,5 +17,5 @@ public interface RestaurantsRepository extends CrudRepository<Restaurant, Long>,
 
     Restaurant findFirstByName(String name);
 
-    List<Restaurant> findAllByCity_Id(Long num);
+    List<Restaurant> findByCityId(Long cityId);
 }

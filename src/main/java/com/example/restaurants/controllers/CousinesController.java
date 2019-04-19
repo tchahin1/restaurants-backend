@@ -1,9 +1,8 @@
 package com.example.restaurants.controllers;
 
 import com.example.restaurants.data.models.Cousine;
-import com.example.restaurants.data.models.Restaurant;
 import com.example.restaurants.repositories.CousinesRepository;
-import com.example.restaurants.repositories.RestaurantsRepository;
+import com.example.restaurants.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public class CousinesController {
     private CousinesRepository cousinesRepository;
 
     @Autowired
-    private RestaurantsRepository restaurantsRepository;
+    private RestaurantRepository restaurantRepository;
 
     @Transactional
     @GetMapping(value = "/all")

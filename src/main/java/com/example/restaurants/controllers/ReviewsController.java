@@ -2,15 +2,13 @@ package com.example.restaurants.controllers;
 
 import com.example.restaurants.data.models.Restaurant;
 import com.example.restaurants.data.models.Review;
-import com.example.restaurants.repositories.RestaurantsRepository;
+import com.example.restaurants.repositories.RestaurantRepository;
 import com.example.restaurants.repositories.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -20,7 +18,7 @@ public class ReviewsController {
     private ReviewsRepository reviewsRepository;
 
     @Autowired
-    private RestaurantsRepository restaurantsRepository;
+    private RestaurantRepository restaurantRepository;
 
     @CrossOrigin
     @PostMapping
@@ -46,7 +44,7 @@ public class ReviewsController {
 
         restaurant.setStars(rate);
 
-        restaurantsRepository.save(restaurant);
+        restaurantRepository.save(restaurant);
 
         return new ResponseEntity("New review successfully added.", HttpStatus.OK);
     }

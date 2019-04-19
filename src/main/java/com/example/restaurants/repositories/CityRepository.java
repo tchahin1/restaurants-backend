@@ -5,13 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CitiesRepository extends CrudRepository<City, Long> {
-    List<City> findByCountryId(Long id);
+public interface CityRepository extends CrudRepository<City, Long> {
     City findByName(String name);
-
-    void deleteByName(String name);
-
     List<City> findByNameContainingIgnoreCase(String name);
-
     City findCityById(Long num);
+    List<City> findByCountryId(Long countryId);
 }

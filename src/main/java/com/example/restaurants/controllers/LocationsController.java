@@ -3,14 +3,12 @@ package com.example.restaurants.controllers;
 import com.example.restaurants.data.models.Locations;
 import com.example.restaurants.data.models.Restaurant;
 import com.example.restaurants.repositories.LocationsRepository;
-import com.example.restaurants.repositories.RestaurantsRepository;
-import net.bytebuddy.asm.Advice;
+import com.example.restaurants.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,7 +19,7 @@ public class LocationsController {
     private LocationsRepository locationsRepository;
 
     @Autowired
-    private RestaurantsRepository restaurantsRepository;
+    private RestaurantRepository restaurantRepository;
 
     @GetMapping("/all")
     public ResponseEntity getLocations() {
@@ -34,7 +32,7 @@ public class LocationsController {
         Locations locations = new Locations();
         locations.setLatitude(lat);
         locations.setLongitude(lng);
-        Restaurant restaurant = restaurantsRepository.findRestaurantById(id);
+        Restaurant restaurant = restaurantRepository.findRestaurantById(id);
         locations.setRestaurant(restaurant);
         locationsRepository.save(locations);
         return new ResponseEntity(HttpStatus.OK);

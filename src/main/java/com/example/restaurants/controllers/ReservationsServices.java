@@ -5,7 +5,7 @@ import com.example.restaurants.data.models.Tables;
 import com.example.restaurants.data.models.Users;
 import com.example.restaurants.repositories.ReservationsRepository;
 import com.example.restaurants.repositories.TablesRepository;
-import com.example.restaurants.repositories.UsersRepository;
+import com.example.restaurants.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class ReservationsServices {
     private TablesRepository tablesRepository;
 
     @Autowired
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
     private LocalDateTime to;
     private LocalDateTime from;
@@ -54,7 +54,7 @@ public class ReservationsServices {
 
         Tables table = null;
 
-        Users user = usersRepository.findByEmail(username);
+        Users user = userRepository.findByEmail(username);
 
         if(offerTables!=null && offerTables.size()!=0){
             Tables tables = new Tables();
@@ -106,7 +106,7 @@ public class ReservationsServices {
         LocalDateTime localDateTimeWanted = LocalDateTime.parse(datetimeWanted, DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"));
 
         Reservations reservation = new Reservations();
-        Users user = usersRepository.findByEmail(username);
+        Users user = userRepository.findByEmail(username);
 
         if (offerTables != null && offerTables.size() != 0) {
             reservation.setTable(offerTables.get(0));

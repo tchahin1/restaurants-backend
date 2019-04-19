@@ -8,7 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface UsersRepository extends CrudRepository<Users, Long> {
+public interface UserRepository extends CrudRepository<Users, Long> {
     Users findByEmail(String email);
 
     void deleteByEmail(String email);
@@ -17,5 +17,5 @@ public interface UsersRepository extends CrudRepository<Users, Long> {
 
     Users findUsersById(Long num);
 
-    List<Users> findAllByCity_Id(Long num);
+    List<Users> findByCityId(Long cityId);
 }
