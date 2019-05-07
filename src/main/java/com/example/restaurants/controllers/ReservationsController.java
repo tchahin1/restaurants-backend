@@ -25,7 +25,7 @@ public class ReservationsController {
     UsersRepository usersRepository;
 
     @Autowired
-    ReservationsServices reservationsServices;
+    ReservationsService reservationsService;
 
     @CrossOrigin
     @GetMapping
@@ -35,7 +35,7 @@ public class ReservationsController {
                                  @RequestParam String restaurant,
                                  @RequestParam Integer type){
 
-       return reservationsServices.saveFunction(date, time, username, restaurant, type);
+       return reservationsService.saveFunction(date, time, username, restaurant, type);
     }
 
     @CrossOrigin
@@ -47,7 +47,7 @@ public class ReservationsController {
                                        @RequestParam String restaurant,
                                        @RequestParam Integer type){
 
-        return reservationsServices.saveByTimeFunction(date, time, timeFrom, username, restaurant, type);
+        return reservationsService.saveByTimeFunction(date, time, timeFrom, username, restaurant, type);
     }
 
     @CrossOrigin
@@ -58,7 +58,7 @@ public class ReservationsController {
                                 @RequestParam String restaurant,
                                 @RequestParam Integer type){
 
-        return reservationsServices.checkTable(date, time, username, restaurant, type);
+        return reservationsService.checkTable(date, time, username, restaurant, type);
     }
 
     @GetMapping("/check")
