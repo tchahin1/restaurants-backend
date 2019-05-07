@@ -91,9 +91,6 @@ public class ReservationsService {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-
-
-
     public ResponseEntity saveByTimeFunction(String date, String time, String timeFrom,String username, String restaurant, Integer type){
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
@@ -150,9 +147,6 @@ public class ReservationsService {
             return new ResponseEntity(HttpStatus.OK);
         }
     }
-
-
-
 
     public ResponseEntity checkTable(String date, String time, String username, String restaurant, Integer type){
         offerTable = null;
@@ -271,10 +265,7 @@ public class ReservationsService {
         return new ResponseEntity(HttpStatus.FORBIDDEN);
     }
 
-
-
-
-    private boolean addCorrespondingTime(String date, Integer type){
+    public boolean addCorrespondingTime(String date, Integer type){
         String datetime = date + " " + "08:00";
         LocalDateTime timeFrom = LocalDateTime.parse(datetime, DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm"));
         datetime = date + " " + "10:01";
