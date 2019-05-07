@@ -2,66 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c1d1e9b-cef6-4fa6-98c2-d00cbce95474" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/RestaurantsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/RestaurantsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/TablesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/TablesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/RestaurantsApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/CitiesController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/CountriesController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/CousinesController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/LocationsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReservationsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReservationsServices.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/RestaurantsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReviewsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/SearchController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/TablesController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/IBaseDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/IUserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/impl/BaseDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/impl/CityDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/impl/CountryDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/impl/RestaurantDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/dal/impl/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/dtos/RestaurantDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/dtos/UserDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/dtos/UserLoginDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/City.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Country.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Cousine.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Locations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Pictures.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Reservations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Restaurant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Review.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Tables.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/data/models/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/CitiesRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/CountriesRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/CousinesRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/LocationsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/PicturesRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/ReservationsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/RestaurantsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/ReviewsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/SearchRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/TablesRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/repositories/UsersRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/security/JWTAuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/security/JWTAuthorizationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/security/SecurityConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/security/UserDetailsServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/security/WebSecurity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/restaurants-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/restaurants-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.restaurants.RestaurantsApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.restaurants.RestaurantsApplicationTests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/restaurants/RestaurantsApplicationTests.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants.iml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -129,47 +73,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/CitiesController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1406#1407#0" expanded="true" />
+                <element signature="e#1445#1446#0" expanded="true" />
+                <element signature="e#1833#1834#0" expanded="true" />
+                <element signature="e#1880#1881#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsServices.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="809">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/RestaurantsController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+            <state relative-caret-position="1305">
+              <caret line="87" column="78" lean-forward="true" selection-start-line="87" selection-start-column="78" selection-end-line="87" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/TablesRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReviewsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="58" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+            <state relative-caret-position="441">
+              <caret line="57" column="81" lean-forward="true" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="81" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://18f8e131-9bcc-42c2-99a6-adfca4819b2f/database/restaurants/schema/public/table/restaurants">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/PicturesRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/LocationsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="45" column="113" selection-start-line="45" selection-start-column="113" selection-end-line="45" selection-end-column="113" />
+            <state relative-caret-position="335">
+              <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,8 +143,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -209,9 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/RestaurantsApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/security/UserDetailsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/dal/impl/CityDao.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/18f8e131-9bcc-42c2-99a6-adfca4819b2f/console.sql" />
@@ -260,6 +217,9 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/TablesRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/RestaurantsController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java" />
       </list>
     </option>
   </component>
@@ -280,8 +240,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="57" />
-    <option name="y" value="41" />
+    <option name="x" value="281" />
+    <option name="y" value="47" />
     <option name="width" value="1440" />
     <option name="height" value="806" />
   </component>
@@ -339,25 +299,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="restaurants" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurants" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurants backend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="restaurants" type="462c0819:PsiDirectoryNode" />
-              <item name="repositories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="restaurants" type="b2602c69:ProjectViewProjectNode" />
-              <item name="restaurants backend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="restaurants" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -375,11 +317,15 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554884437634" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557224768238" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -393,7 +339,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity">
     <configuration name="RestaurantsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="restaurants" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.restaurants.RestaurantsApplication" />
@@ -401,6 +347,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="restaurants" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.restaurants.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.restaurants.tests" />
+      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.tests.ReviewsTests" />
+      <option name="METHOD_NAME" value="create_NewReviewForExistingUser_ReturnsResponseEntity" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -421,8 +390,31 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 15m 09s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 20m 09s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 25m 14s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 25m 21s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 28m 24s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 28m 53s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 29m 22s.xml">
+      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="335184000" />
+    <option name="totallyTimeSpent" value="339498000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -435,6 +427,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49759036" visible="true" weight="0.2160229" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -447,8 +440,8 @@
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32891566" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32771084" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.23253012" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32771084" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.23253012" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32891566" />
@@ -475,31 +468,85 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="598" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>38</line>
+          <properties />
+          <option name="timeStamp" value="599" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="601" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="602" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="603" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="604" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="605" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="606" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>47</line>
+          <properties />
+          <option name="timeStamp" value="607" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="608" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="609" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="610" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.1.4.RELEASE/spring-aop-5.1.4.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/SearchRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="175" selection-start-line="25" selection-start-column="175" selection-end-line="25" selection-end-column="175" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/Restaurant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/Review.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -612,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReviewsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.3.RELEASE/spring-security-core-5.1.3.RELEASE.jar!/org/springframework/security/core/userdetails/User.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -641,7 +678,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/security/JWTAuthenticationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="1140">
           <caret line="81" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -711,13 +748,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/CitiesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="71" column="48" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -821,19 +851,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="1107">
           <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -852,13 +872,6 @@
       </provider>
     </entry>
     <entry file="das://18f8e131-9bcc-42c2-99a6-adfca4819b2f/database/restaurants/schema/public/table/reservations">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://18f8e131-9bcc-42c2-99a6-adfca4819b2f/database/restaurants/schema/public/table/reviews">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -897,17 +910,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsServices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2059">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#16992#17001#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,5 +958,156 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/security/UserDetailsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/CitiesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1406#1407#0" expanded="true" />
+            <element signature="e#1445#1446#0" expanded="true" />
+            <element signature="e#1833#1834#0" expanded="true" />
+            <element signature="e#1880#1881#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsServices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="809">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://18f8e131-9bcc-42c2-99a6-adfca4819b2f/database/restaurants/schema/public/table/reviews">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReviewsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="57" column="81" lean-forward="true" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="87" column="78" lean-forward="true" selection-start-line="87" selection-start-column="78" selection-end-line="87" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>restaurants</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
