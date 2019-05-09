@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c1d1e9b-cef6-4fa6-98c2-d00cbce95474" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_72.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_extras_beanshell_bsh_2_0b6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_6_14_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReservationsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReservationsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants.iml" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/restaurants/ReservationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/restaurants/ReservationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReservationsServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReviewsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/restaurants/controllers/ReviewsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/restaurants/RestaurantsApplicationTests.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -114,35 +118,37 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5835">
-              <caret line="389" column="10" selection-start-line="389" selection-start-column="10" selection-end-line="389" selection-end-column="10" />
+            <state relative-caret-position="-992">
+              <caret line="310" selection-start-line="310" selection-end-line="310" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1250#1251#0" expanded="true" />
+                <element signature="e#1277#1278#0" expanded="true" />
+                <element signature="e#1324#1325#0" expanded="true" />
+                <element signature="e#1356#1357#0" expanded="true" />
+                <element signature="e#1394#1395#0" expanded="true" />
+                <element signature="e#1421#1422#0" expanded="true" />
+                <element signature="e#1468#1469#0" expanded="true" />
+                <element signature="e#1500#1501#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReviewsController.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/restaurants/ReservationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="256">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/restaurants/UserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="46" lean-forward="true" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="32">
+              <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -200,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/dal/impl/CityDao.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/18f8e131-9bcc-42c2-99a6-adfca4819b2f/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/CountryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/repositories/UserRepository.java" />
@@ -248,9 +253,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/RestaurantsController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReviewsTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/Locations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/example/restaurants/ReservationTest.java" />
       </list>
     </option>
   </component>
@@ -271,8 +277,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="620" />
-    <option name="y" value="23" />
+    <option name="x" value="276" />
+    <option name="y" value="28" />
     <option name="width" value="1440" />
     <option name="height" value="806" />
   </component>
@@ -336,10 +342,22 @@
               <item name="restaurants" type="b2602c69:ProjectViewProjectNode" />
               <item name="restaurants backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="restaurants" type="b2602c69:ProjectViewProjectNode" />
+              <item name="restaurants backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="restaurants" type="b2602c69:ProjectViewProjectNode" />
+              <item name="restaurants backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="restaurants" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -357,7 +375,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557229999047" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557414445354" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -379,7 +397,39 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ReservationsTests">
+  <component name="RunManager" selected="JUnit.UserTest.testRegisterInvalid">
+    <configuration name="ReservationTest.findNearestTable_IfExists_ReturnsTables" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="restaurants" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.restaurants.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.restaurants" />
+      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.ReservationTest" />
+      <option name="METHOD_NAME" value="findNearestTable_IfExists_ReturnsTables" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="restaurants" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.restaurants.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.restaurants" />
+      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.ReservationTest" />
+      <option name="METHOD_NAME" value="getDeletedTemplateStepIdsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ReservationsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="restaurants" />
       <extension name="coverage">
@@ -395,17 +445,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTest.testRegisterInvalid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="restaurants" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.restaurants.tests.*" />
+          <option name="PATTERN" value="com.example.restaurants.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.restaurants.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.tests.ReservationsTests" />
-      <option name="METHOD_NAME" value="find_NearestTables_CaseWhenTableExists_ReturnsTables" />
+      <option name="PACKAGE_NAME" value="com.example.restaurants" />
+      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.UserTest" />
+      <option name="METHOD_NAME" value="testRegisterInvalid" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testRegisterValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="restaurants" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.restaurants.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.restaurants" />
+      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.UserTest" />
+      <option name="METHOD_NAME" value="testRegisterValid" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -418,48 +484,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReservationsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="restaurants" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.restaurants.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.restaurants.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.tests.ReservationsTests" />
-      <option name="METHOD_NAME" value="create_NewReviewForExistingUser_ReturnsResponseEntity" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="restaurants" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.restaurants.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.restaurants.tests" />
-      <option name="MAIN_CLASS_NAME" value="com.example.restaurants.tests.ReservationsTests" />
-      <option name="METHOD_NAME" value="find_NearestTables_CaseWhenTableExists_ReturnsTables" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserTest.testRegisterInvalid" />
+        <item itemvalue="JUnit.UserTest.testRegisterValid" />
+        <item itemvalue="JUnit.ReservationTest.findNearestTable_IfExists_ReturnsTables" />
+        <item itemvalue="JUnit.ReservationTest.getDeletedTemplateStepIdsTest" />
         <item itemvalue="JUnit.ReservationsTests" />
-        <item itemvalue="TestNG.ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" />
-        <item itemvalue="JUnit.ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" />
-        <item itemvalue="TestNG.ReservationsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" />
       </list>
     </recent_temporary>
   </component>
@@ -483,39 +514,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 25m 21s.xml">
-      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    <history-entry file="ReservationTest_getDeletedTemplateStepIdsTest - 2019.05.09 at 16h 34m 20s.xml">
+      <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 28m 24s.xml">
-      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    <history-entry file="ReservationTest_getDeletedTemplateStepIdsTest - 2019.05.09 at 16h 36m 34s.xml">
+      <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 28m 53s.xml">
-      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    <history-entry file="ReservationTest_getDeletedTemplateStepIdsTest - 2019.05.09 at 16h 47m 38s.xml">
+      <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReviewsTests_create_NewReviewForExistingUser_ReturnsResponseEntity - 2019.05.03 at 10h 29m 22s.xml">
-      <configuration name="ReviewsTests.create_NewReviewForExistingUser_ReturnsResponseEntity" configurationId="TestNG" />
+    <history-entry file="ReservationTest_getDeletedTemplateStepIdsTest - 2019.05.09 at 16h 49m 57s.xml">
+      <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationsTests_find_NearestTables_CaseWhenTableExists_ReturnsTables - 2019.05.07 at 13h 09m 13s.xml">
-      <configuration name="ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" configurationId="JUnit" />
+    <history-entry file="ReservationTest_getDeletedTemplateStepIdsTest - 2019.05.09 at 16h 54m 57s.xml">
+      <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationsTests_find_NearestTables_CaseWhenTableExists_ReturnsTables - 2019.05.07 at 13h 10m 41s.xml">
-      <configuration name="ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" configurationId="JUnit" />
+    <history-entry file="ReservationTest_getDeletedTemplateStepIdsTest - 2019.05.09 at 16h 57m 05s.xml">
+      <configuration name="ReservationTest.getDeletedTemplateStepIdsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationsTests_find_NearestTables_CaseWhenTableExists_ReturnsTables - 2019.05.07 at 13h 11m 32s.xml">
-      <configuration name="ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" configurationId="TestNG" />
+    <history-entry file="ReservationTest_findNearestTable_IfExists_ReturnsTables - 2019.05.09 at 17h 04m 22s.xml">
+      <configuration name="ReservationTest.findNearestTable_IfExists_ReturnsTables" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationsTests_find_NearestTables_CaseWhenTableExists_ReturnsTables - 2019.05.07 at 13h 18m 57s.xml">
-      <configuration name="ReservationsTests.find_NearestTables_CaseWhenTableExists_ReturnsTables" configurationId="TestNG" />
+    <history-entry file="ReservationTest_findNearestTable_IfExists_ReturnsTables - 2019.05.09 at 17h 06m 06s.xml">
+      <configuration name="ReservationTest.findNearestTable_IfExists_ReturnsTables" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationsTests - 2019.05.07 at 13h 19m 18s.xml">
-      <configuration name="ReservationsTests" configurationId="JUnit" />
+    <history-entry file="UserTest_testRegisterValid - 2019.05.09 at 17h 07m 16s.xml">
+      <configuration name="UserTest.testRegisterValid" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationsTests - 2019.05.07 at 13h 22m 34s.xml">
-      <configuration name="ReservationsTests" configurationId="JUnit" />
+    <history-entry file="UserTest_testRegisterInvalid - 2019.05.09 at 17h 07m 46s.xml">
+      <configuration name="UserTest.testRegisterInvalid" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342233000" />
+    <option name="totallyTimeSpent" value="347853000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -530,7 +561,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49759036" visible="true" weight="0.2160229" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49759036" visible="true" weight="0.2160229" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -541,8 +572,8 @@
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32891566" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.32771084" />
-      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.23253012" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32771084" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.23253012" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32891566" />
@@ -644,47 +675,10 @@
           <properties />
           <option name="timeStamp" value="610" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java</url>
-          <line>23</line>
-          <properties />
-          <option name="timeStamp" value="612" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java</url>
-          <line>25</line>
-          <properties />
-          <option name="timeStamp" value="613" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="614" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/Review.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
-          <folding>
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/data/models/Reservations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -802,13 +796,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/RestaurantsApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1028,13 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/security/UserDetailsServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1063,37 +1043,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://18f8e131-9bcc-42c2-99a6-adfca4819b2f/database/restaurants/schema/public/table/tables">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReviewsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5835">
-          <caret line="389" column="10" selection-start-line="389" selection-start-column="10" selection-end-line="389" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1128,13 +1081,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/tests/ReservationsTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="46" lean-forward="true" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+        <state relative-caret-position="300">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReviewsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/RestaurantsApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://18f8e131-9bcc-42c2-99a6-adfca4819b2f/database/restaurants/schema/public/table/tables">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/controllers/ReservationsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-992">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1250#1251#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#1324#1325#0" expanded="true" />
+            <element signature="e#1356#1357#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1421#1422#0" expanded="true" />
+            <element signature="e#1468#1469#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/restaurants/ReservationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/restaurants/UserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="35" column="43" lean-forward="true" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
         </state>
       </provider>
     </entry>

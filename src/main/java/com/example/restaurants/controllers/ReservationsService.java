@@ -35,6 +35,22 @@ public class ReservationsService {
     private Tables offerTable = null;
     private ArrayList<Tables> offerTables = null;
 
+    public LocalDateTime getFrom() {
+        return from;
+    }
+
+    public void setFrom(LocalDateTime from) {
+        this.from = from;
+    }
+
+    public LocalDateTime getTo() {
+        return to;
+    }
+
+    public void setTo(LocalDateTime to) {
+        this.to = to;
+    }
+
     public ResponseEntity saveFunction(String date, String time, String username, String restaurant, Integer type){
         if(time.charAt(0)!='0' && time.charAt(1)==':') time='0'+time;
         String datetime = date + " " + time;
