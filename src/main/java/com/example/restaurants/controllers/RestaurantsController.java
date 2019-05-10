@@ -81,6 +81,7 @@ public class RestaurantsController {
     public Page<List<Restaurant>> search(@RequestParam String query,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size) {
+        if(query.equals("")) query = "sarajevo";
         Page<List<Restaurant>> restaurantPage = searchRepository.findRestaurantsByNameContainsIgnoreCaseOrCity_NameContainsIgnoreCaseOrAddressContainsIgnoreCase(query, query,
                 query, new PageRequest(page, size, new Sort(new Sort.Order(Sort.Direction.DESC, "name"))));
         return restaurantPage;

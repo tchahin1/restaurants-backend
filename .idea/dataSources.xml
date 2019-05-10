@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/restaurants</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="heroku-backend" uuid="01e5d59b-4548-4b39-bb22-a56ab07910ef">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-247-96-169.eu-west-1.compute.amazonaws.com:5432/ddfi32ln3lut3a</jdbc-url>
+    </data-source>
   </component>
 </project>
