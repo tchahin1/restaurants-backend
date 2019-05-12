@@ -1,6 +1,7 @@
 package com.example.restaurants.controllers;
 
 import com.example.restaurants.data.models.Reservations;
+import com.example.restaurants.data.models.Tables;
 import com.example.restaurants.repositories.ReservationsRepository;
 import com.example.restaurants.repositories.TablesRepository;
 import com.example.restaurants.repositories.UsersRepository;
@@ -71,5 +72,29 @@ public class ReservationsController {
             return new ResponseEntity(reservations.get(i), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(reservations, HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/confirm")
+    public ResponseEntity confirm(@RequestParam String username,
+                                  @RequestParam String restaurant,
+                                  @RequestParam Integer type){
+        Reservations reservations = reservationsRepository.findByUser_EmailAndTable_Restaurant_NameAndTable_TypeAndTemporaryIsTrue(username, restaurant, type);
+        reservations.setTemporary(false);
+        reservationsRepository.save(reservations);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/cancel")
+    public ResponseEntity cancel(@RequestParam String username,
+                                  @RequestParam String restaurant,
+                                  @RequestParam Integer type){
+        Reservations reservations = reservationsRepository.findByUser_EmailAndTable_Restaurant_NameAndTable_TypeAndTemporaryIsTrue(username, restaurant, type);
+        Tables table = reservations.getTable();
+        table.setReserved(false);
+        tablesRepository.save(table);
+        reservationsRepository.delete(reservations);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

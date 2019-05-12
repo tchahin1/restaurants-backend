@@ -25,4 +25,7 @@ public interface ReservationsRepository extends CrudRepository<Reservations, Lon
     List<Reservations> findAllByTable_Id(Long num);
 
     List<Reservations> findAllByUser(Users users);
+
+    Reservations findByUser_EmailAndTable_Restaurant_NameAndTable_TypeAndTemporaryIsTrue
+            (String email, String restaurant, Integer type);
 }

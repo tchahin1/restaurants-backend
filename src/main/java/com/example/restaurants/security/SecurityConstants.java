@@ -60,4 +60,6 @@ public class SecurityConstants {
     public static final String LOCATIONS_EDIT = "/locations/edit";
 
     public static final String SORT = "/restaurants/sort";
+    public static final String CONFIRM = "/reservations/confirm";
+    public static final String CANCEL = "/reservations/cancel";
 }
