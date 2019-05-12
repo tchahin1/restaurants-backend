@@ -42,9 +42,9 @@ public class ReservationTest {
 	@Test
 	public void findNearestTable_IfExists_ReturnsTables() {
 
-		Integer expected = 7;
+		Integer expected = 4;
 
-		Integer actual = reservationsService.findNearest(5).getType();
+		Integer actual = reservationsService.findNearest(3).getType();
 
 		Assert.assertEquals(actual, expected);
 	}

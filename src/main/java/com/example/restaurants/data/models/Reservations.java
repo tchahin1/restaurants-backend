@@ -25,6 +25,9 @@ public class Reservations {
     @ManyToOne
     private Tables table;
 
+    @Column
+    private Boolean temporary;
+
     public Long getId() {
         return id;
     }
@@ -61,5 +64,13 @@ public class Reservations {
 
     public void setTable(Tables table) {
         this.table = table;
+    }
+
+    public Boolean getTemporary() {
+        return temporary;
+    }
+
+    public void setTemporary(Boolean temporary) {
+        this.temporary = temporary;
     }
 }

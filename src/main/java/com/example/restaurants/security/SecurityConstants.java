@@ -58,4 +58,6 @@ public class SecurityConstants {
     public static final String GET_ALL_LOCATIONS = "/locations/all";
     public static final String LOCATIONS_SAVE = "/locations/save";
     public static final String LOCATIONS_EDIT = "/locations/edit";
+
+    public static final String SORT = "/restaurants/sort";
 }

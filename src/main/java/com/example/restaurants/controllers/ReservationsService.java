@@ -99,6 +99,7 @@ public class ReservationsService {
         reservation.setTimeFrom(localDateTimeFrom);
         reservation.setTimeTo(localDateTimeTo);
         reservation.setUser(user);
+        reservation.setTemporary(true);
 
         reservationsRepository.save(reservation);
         table.setReserved(true);
