@@ -80,6 +80,7 @@ public class ReservationsController {
                                   @RequestParam String restaurant,
                                   @RequestParam Integer type){
         Reservations reservations = reservationsRepository.findByUser_EmailAndTable_Restaurant_NameAndTable_TypeAndTemporaryIsTrue(username, restaurant, type);
+
         reservations.setTemporary(false);
         reservationsRepository.save(reservations);
         return new ResponseEntity(HttpStatus.OK);
@@ -96,5 +97,13 @@ public class ReservationsController {
         tablesRepository.save(table);
         reservationsRepository.delete(reservations);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/checkTemp")
+    public ResponseEntity checkTemporaryReservation(@RequestParam String username){
+        Reservations reservations = reservationsRepository.findByUser_EmailAndTemporaryIsTrue(username);
+        if(reservations != null) return new ResponseEntity(reservations, HttpStatus.OK);
+        else return new ResponseEntity(HttpStatus.FORBIDDEN);
     }
 }

@@ -62,4 +62,5 @@ public class SecurityConstants {
     public static final String SORT = "/restaurants/sort";
     public static final String CONFIRM = "/reservations/confirm";
     public static final String CANCEL = "/reservations/cancel";
+    public static final String CHECKTEMP = "/reservations/checkTemp";
 }
