@@ -369,8 +369,17 @@ public class RestaurantsController {
     }
 
     @GetMapping("/sort")
-    public ResponseEntity sort(String query, Double lon, Double lat){
-        List<Restaurant> result = restaurantsRepository.sortRestaurants(lat, lon);
+    public ResponseEntity sort(String query, Double lon, Double lat, Integer pricing, Integer rating) {
+
+        if (pricing == null) {
+            pricing = -1;
+        }
+
+        if (rating == null) {
+            rating = -1;
+        }
+
+        List<Restaurant> result = restaurantsRepository.sortRestaurants(lat, lon, query, pricing, rating);
         return new ResponseEntity(result, HttpStatus.OK);
     }
 }
